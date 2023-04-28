@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Umbraco.Cms" Version="10.2.0" />
+        <PackageReference Include="Umbraco.Forms" Version="10.3.0" />
+        <PackageReference Include="Umbraco.Forms.Web" Version="10.3.0" />
+        <PackageReference Include="Vendr" Version="3.0.0" />
+        <PackageReference Include="Vendr.PaymentProviders.PayPal" Version="2.0.1" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <Compile Remove="umbraco\Data\**" />
+        <Compile Remove="umbraco\logs\**" />
+        <Compile Remove="umbraco\MediaCache\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Remove="umbraco\Data\**" />
+        <EmbeddedResource Remove="umbraco\logs\**" />
+        <EmbeddedResource Remove="umbraco\MediaCache\**" /> 
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="umbraco\Data\**" />
+        <None Remove="umbraco\logs\**" />
+        <None Remove="umbraco\MediaCache\**" />
+        <None Include="config\**\*.*">
+            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+        </None>
+        <None Include="umbraco\**\*.*">
+            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Remove="umbraco\Data\**" />
+        <Content Remove="umbraco\logs\**" />
+        <Content Remove="umbraco\MediaCache\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Vendr.DemoStore\Vendr.DemoStore.csproj" />
+    </ItemGroup>
+
+    <!-- Set this to true if ModelsBuilder mode is not InMemoryAuto-->
+    <PropertyGroup>
+        <RazorCompileOnBuild>false</RazorCompileOnBuild>
+    </PropertyGroup>
+
+    <!--
+    <Target Name="CopyUiFiles" BeforeTargets="Build">
+        <ItemGroup>
+            <VendrUiFiles Include="$(MSBuildProjectDirectory)\..\..\..\Vendr_v3\src\Vendr.Umbraco.Web.UI\App_Plugins\Vendr\**\*.*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(VendrUiFiles)" DestinationFiles="@(VendrUiFiles->'$(MSBuildProjectDirectory)\App_Plugins\Vendr\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    </Target>
+    -->
+</Project>
