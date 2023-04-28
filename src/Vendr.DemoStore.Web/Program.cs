@@ -19,6 +19,7 @@ namespace Vendr.DemoStore.Web
                 {
                     webBuilder.UseStaticWebAssets();
                     webBuilder.UseStartup<Startup>();
+
                 });
     }
 }
