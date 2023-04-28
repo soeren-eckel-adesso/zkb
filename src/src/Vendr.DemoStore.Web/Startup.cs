@@ -6,8 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Extensions;
-using Umbraco.Forms.Core.Extensions;
-using Umbraco.Forms.Examine.Extensions;
 
 namespace Vendr.DemoStore.Web
 {
