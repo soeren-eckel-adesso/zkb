@@ -1,0 +1,12 @@
+<ng-container *ngIf="formControl">
+  <ng-container *ngLet="formControl.valueChanges | async">
+    <div class="input-block" [ngClass]="{'filled-design': useFilledDesign}">
+
+      <input [id]="id" [name]="id" [type]="type" [formControl]="formControl" [ngClass]="{'error': hasError}" (blur)="setFocus(false)" (focus)="setFocus(true)" (keypress)="keypress($event)" autocomplete="new-password">
+      <label [for]="id">{{label}}</label>
+      <div *ngIf="errorMessage" class="error-text">
+        {{errorMessage}}
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

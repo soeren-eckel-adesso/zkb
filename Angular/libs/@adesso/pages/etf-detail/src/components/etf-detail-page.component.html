@@ -1,0 +1,35 @@
+<div class="main-content-background">
+  <div class="inner-content-area">
+    <ng-container *ngIf="pageConfig$ | async as pageConfig">
+      <feature-instrument-detail-header [breadCrumbItems]="pageConfig.breadCrumbItems" [chartQuoteBoxValues]="pageConfig.chartQuoteBoxValues" [instrumentHeader]="pageConfig.instrumentHeader"></feature-instrument-detail-header>
+
+      <div class="content-columns">
+        <div class="content-column">
+          <ui-content-box [headline]="'base-data-headline' | translate">
+            <ui-key-value-list [items]="pageConfig.baseData"></ui-key-value-list>
+          </ui-content-box>
+        </div>
+        <div class="content-column">
+          <ui-content-box [headline]="'costs-headline' | translate">
+            <ui-key-value-list [items]="pageConfig.costs"></ui-key-value-list>
+          </ui-content-box>
+        </div>
+      </div>
+
+      <div class="content-columns">
+        <div class="content-column">
+          <ui-composition [compositions]="pageConfig.countryCompositions" [headline]="'composition-country-headline' | translate"></ui-composition>
+        </div>
+        <div class="content-column" >
+          <ui-composition [compositions]="pageConfig.industryCompositions" [headline]="'composition-industry-headline' | translate"></ui-composition>
+        </div>
+        <div class="content-column">
+          <ui-composition [compositions]="pageConfig.equityCompositions" [headline]="'composition-equity-headline' | translate"></ui-composition>
+        </div>
+      </div>
+
+      <ui-content-box [headline]="'strategy-headline' | translate" *ngIf="pageConfig.strategy">{{pageConfig.strategy}}</ui-content-box>
+
+    </ng-container>
+  </div>
+</div>

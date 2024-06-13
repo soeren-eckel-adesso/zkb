@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Elements <%= name %></title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <adesso-content-box headline="Meine Überschrift">
+    Mein Inhalt
+  </adesso-content-box>
+  <script src="element-<%= name %>-es2017.js" type="module"></script>
+  <script src="element-<%= name %>-es5.js" nomodule defer></script>
+</body>
+</html>

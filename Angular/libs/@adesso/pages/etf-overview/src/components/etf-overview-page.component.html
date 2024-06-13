@@ -1,0 +1,18 @@
+<feature-carousel-with-search [slides]="slides"></feature-carousel-with-search>
+
+<div class="inner-content-area">
+  <div class="content-columns">
+    <div class="content-column">
+      <ui-instrument-list [listItems]="commodityFunds$ | async" [headline]="'commodity-etf-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+      <ui-instrument-list [listItems]="mixedFunds$ | async" [headline]="'mixed-etf-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+      <ui-instrument-list [listItems]="moneyMarketFunds$ | async" [headline]="'money-market-etf-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+      <ui-instrument-list [listItems]="umbrellaFunds$ | async" [headline]="'umbrella-etf-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+    </div>
+    <div class="content-column">
+      <ui-instrument-list [listItems]="equityFunds$ | async" [headline]="'equity-etf-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+      <ui-instrument-list [listItems]="pensionFunds$ | async" [headline]="'pension-etf-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+      <ui-instrument-list [listItems]="miscellaneousFunds$ | async" [headline]="'miscellaneous-etf-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+    </div>
+  </div>
+</div>
+

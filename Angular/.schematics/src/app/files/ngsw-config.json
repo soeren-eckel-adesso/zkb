@@ -1,0 +1,55 @@
+{
+  "$schema": "../../node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "lazy",
+      "updateMode": "lazy",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/assets/loading.gif",
+          "/index.html",
+          "/manifest.webmanifest",
+          "/*.css",
+          "/*.js"
+        ]
+      }
+    }, {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "lazy",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "app",
+      "urls": ["/**"],
+      "version": 1,
+      "cacheConfig": {
+        "maxAge": "1m",
+        "maxSize": 50,
+        "strategy": "freshness",
+        "timeout": "5s"
+      }
+    },
+    {
+      "name": "Instrument Detail",
+      "urls": ["https://tonline-api.sh01.de/stroeer/adesso_api/1.0.0/**"],
+      "version": 1,
+      "cacheConfig": {
+        "maxAge": "1m",
+        "maxSize": 50,
+        "strategy": "performance",
+        "timeout": "5s"
+      }
+    }
+  ]
+}

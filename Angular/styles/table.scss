@@ -1,0 +1,68 @@
+@import "variables";
+@import "default";
+@import "fonts";
+
+@mixin table-default {
+  @include font-default;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  border: $table-border;
+  table-layout: fixed;
+  th,
+  td {
+    white-space: nowrap;
+    padding: 10px;
+    font-size: 13px;
+
+  }
+  th {
+    text-align: left;
+    background-color: $color-table-header-background;
+    color: $color-table-header-font;
+  }
+  td {
+    font-weight: bold;
+    color: $color-default;
+    a {
+      color: $color-default;
+    }
+    border-bottom: $table-border;
+  }
+  tr:nth-child(odd) td {
+    background-color: $color-table-row-background-odd;
+  }
+  tr:nth-child(even) td {
+    background-color: $color-table-row-background-even;
+  }
+  .main-value {
+    margin-bottom: 3px;
+  }
+  .main-value,
+  .sub-value {
+    display: block;
+  }
+
+  a.main-value,
+  a.sub-value {
+    color: $color-default;
+  }
+
+  .positive-value {
+    color: $color-positive
+  }
+  .negative-value {
+    color: $color-negative
+  }
+}
+
+@media #{$onMobile} {
+  .table-desktop {
+    display: none;
+  }
+}
+@media #{$onDesktop} {
+  .table-mobile {
+    display: none;
+  }
+}

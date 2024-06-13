@@ -1,0 +1,10 @@
+<ng-container *ngIf="rating !== undefined">
+  <ng-container *ngFor="let n of this.numbers">
+    <ng-container *ngIf="n < rating; else blankStar">
+      <img src="./assets/icons/star-filled.svg" />
+    </ng-container>
+    <ng-template #blankStar>
+      <img src="./assets/icons/star-empty.svg" />
+    </ng-template>
+  </ng-container>
+</ng-container>

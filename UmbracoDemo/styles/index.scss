@@ -1,0 +1,54 @@
+/**
+ * CONTENTS
+ *
+ * IMPORT BASE
+ * Project Functions...Sass projects functions
+ * Variables...........Global Styles value settings
+ * Fonts...............Font setting
+ * IMPORTS PLUGINS
+ * Bootstrap...........Bootstrap library
+ * CUSTOM
+ * Elements............Custom element setting
+ * Typography..........Typography element setting
+ * Ribbon..............Ribbon element setting
+**/
+
+/*------------------------------------*\
+   #IMPORT BASE
+ \*------------------------------------*/
+
+/**
+ * Project Functions
+ */
+@import "./functions";
+
+/**
+  * Variables
+  */
+@import "./_variables";
+
+/*------------------------------------*\
+   #IMPORTS PLUGINS
+ \*------------------------------------*/
+/**
+  * Bootstrap
+  */
+@import "node_modules/bootstrap/scss/bootstrap";
+
+/*------------------------------------*\
+   #Custom
+\*------------------------------------*/
+
+/**
+  * Elements
+  */
+@import "./_elements";
+
+/**
+  * Typography
+  */
+@import "./typography";
+
+@import "./privacy-video";
+
+@import "./newsletter";

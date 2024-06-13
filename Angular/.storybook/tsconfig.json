@@ -1,0 +1,24 @@
+{
+  "extends": "../apps/web-storybook/tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "node"
+    ]
+  },
+  "exclude": [
+    "../src/test.ts",
+    "../src/**/*.spec.ts",
+    "../libs/**/*.spec.ts",
+    "../apps/**/*.spec.ts",
+    "../projects/**/*.spec.ts"
+  ],
+  "include": [
+    "../src/**/*",
+    "../projects/**/*",
+    "../apps/**/*",
+    "../libs/**/*"
+  ],
+  "files": [
+    "./typings.d.ts"
+  ]
+}

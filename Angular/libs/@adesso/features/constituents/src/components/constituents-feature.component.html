@@ -1,0 +1,4 @@
+<ui-instrument-list [listItems]="constituents$ | async" [headline]="'constituents-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+<div class="page-container" *ngIf="constituentsPageCount$ | async as constituentsPageCount">
+  <ui-paging #constituentsPaging [pageCount]="constituentsPageCount" [currentPage]="1"></ui-paging>
+</div>

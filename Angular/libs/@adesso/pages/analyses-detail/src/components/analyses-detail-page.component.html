@@ -1,0 +1,10 @@
+<div class="inner-content-area">
+  <ng-container *ngIf="analyse$ | async as analyse; else loading">
+    <ui-analyses-detail [analyse]="analyse"></ui-analyses-detail>
+  </ng-container>
+  <ng-template #loading>
+    <div class="loading-page">
+      <img src="./assets/loading.gif">
+    </div>
+  </ng-template>
+</div>

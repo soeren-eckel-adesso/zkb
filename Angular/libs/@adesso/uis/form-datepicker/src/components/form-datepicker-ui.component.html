@@ -1,0 +1,77 @@
+<div #calender>
+  <ng-container *ngIf="control?.value">
+    <span class="currentDate" (click)="open()" [ngClass]="{'float-right': positionRight}">
+      <img src="assets/icons/calender.png" />
+      {{ control.value | dateOrTime}}
+    </span>
+  </ng-container>
+  <ng-container *ngIf="datepickerModel$ | async as datepickerModel">
+    <div class="calender" [hidden]="calenderView === calenderViewEnum.Closed"
+         [ngClass]="{'calender-right': positionRight}">
+      <div class="arrow-up" [ngClass]="{'arrow-up-right': positionRight, 'arrow-up-left': !positionRight}"></div>
+      <div class="calender-header" [hidden]="calenderView === calenderViewEnum.Years || calenderView === calenderViewEnum.Month">
+        <div class="month-select">
+          <div class="calender-select month"
+               (click)="calenderView = calenderViewEnum.Month">
+            <div class="selected-month">{{monthListEnum[datepickerModel.selectedMonth] | translate}}</div>
+            <div class="arrow-down month-arrow"></div>
+          </div>
+        </div>
+        <div class="year-select">
+          <div class="calender-select"
+               (click)="calenderView = calenderViewEnum.Years">
+            <div class="arrow-down year-arrow"></div>
+            <div class="float-right">{{datepickerModel.selectedYear}}</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="calender-body">
+        <div [hidden]="calenderView === calenderViewEnum.Month || calenderView === calenderViewEnum.Years">
+          <div class="day-list-container">
+            <ng-container *ngFor="let dayName of keys(daysNameList); let i = index">
+              <div class="day-list day-name" *ngIf="isEnumValue(dayName)">{{daysNameList[dayName] | translate}}</div>
+            </ng-container>
+            <div *ngFor="let day of datepickerModel.daysList; let i = index" class="day-list day" (click)="selectedDay = day">
+              <div
+                [ngClass]="{'last-moth-day': day.getMonth() !== datepickerModel.selectedMonth, 'selected-day': isSelectedDay(day, selectedDay)}">
+                {{day.getDate()}}
+              </div>
+            </div>
+          </div>
+          <div class="ui-button" (click)="selectedNewDate()">
+            {{'take' | translate}}
+          </div>
+        </div>
+        <div [hidden]="calenderView === calenderViewEnum.Years || calenderView === calenderViewEnum.Open" class="select-options">
+          <div (click)="calenderView = calenderViewEnum.Open" class="close-button">
+            <img src="assets/icons/input-clear.png" />
+          </div>
+          <ng-container *ngFor="let month of keys(monthListEnum)">
+            <div *ngIf="isEnumValue(month)" class="select-option" (click)="monthChange(+month)">
+              {{monthListEnum[month] | translate}}
+              <div *ngIf="month == selectedMonth.value" class="selected-option">
+                <img src="assets/icons/checkbox-active.png" />
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <div [hidden]="calenderView === calenderViewEnum.Month || calenderView === calenderViewEnum.Open" class="select-options">
+          <div (click)="calenderView = calenderViewEnum.Open" class="close-button">
+            <img src="assets/icons/input-clear.png" />
+          </div>
+          <div *ngFor="let year of yearList" class="select-option" (click)="yearChange(year)">
+            {{year}}
+            <div *ngIf="selectedYear.value == year" class="selected-option">
+              <img src="assets/icons/checkbox-active.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </ng-container>
+</div>
+
+
+

@@ -1,0 +1,17 @@
+<ng-container *ngIf="isInit && compositions && compositions.length > 0">
+  <div class="ui-composition">
+    <div class="chart-box">
+      <ui-chart-pie [colors]="chartColors" [items]="compositions" (hoverIdChanged)="hoverId = $event"></ui-chart-pie>
+    </div>
+    <div class="ui-composition-table-box">
+      <h2 class="headline">{{headline}}</h2>
+      <table>
+        <tr *ngFor="let item of compositions; index as i" [ngClass]="{'selected': hoverId == i}">
+          <td><span class="dottedText"><span [ngStyle]="{backgroundColor: getColor(i).from}" class="color-box"></span>{{item.name}}</span></td>
+          <td>{{item.portion | percentage}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</ng-container>
+{{logger.uiUpdate("CompositionUiComponent")}}

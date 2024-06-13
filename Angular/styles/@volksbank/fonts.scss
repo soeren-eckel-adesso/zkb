@@ -1,0 +1,25 @@
+@font-face{font-family: 'frutigernextcondensed';    src: url('/assets/font/FrutigerNextW01-Condensed.eot');    src: url('/assets/font/FrutigerNextW01-Condensed.eot?#iefix') format('embedded-opentype'),         url('/assets/font/FrutigerNextW01-Condensed.woff') format('woff'),         url('/assets/font/FrutigerNextW01-Condensed.ttf') format('truetype'),         url('/assets/font/FrutigerNextW01-Condensed.svg#FrutigerNextW01-Condensed') format('svg')}
+@font-face{font-family: 'frutigernextitalic';    src: url('/assets/font/FrutigerNextW01-Italic.eot');    src: url('/assets/font/FrutigerNextW01-Italic.eot?#iefix') format('embedded-opentype'),         url('/assets/font/FrutigerNextW01-Italic.woff') format('woff'),         url('/assets/font/FrutigerNextW01-Italic.ttf') format('truetype'),         url('/assets/font/FrutigerNextW01-Italic.svg#FrutigerNextW01-Italic') format('svg')}
+@font-face{font-family: 'frutigernextregular';    src: url('/assets/font/FrutigerNextW01-Regular.eot');    src: url('/assets/font/FrutigerNextW01-Regular.eot?#iefix') format('embedded-opentype'),         url('/assets/font/FrutigerNextW01-Regular.woff') format('woff'),         url('/assets/font/FrutigerNextW01-Regular.ttf') format('truetype'),         url('/assets/font/FrutigerNextW01-Regular.svg#FrutigerNextW01-Regular') format('svg')}
+@font-face{font-family: 'frutigernextbold';    src: url('/assets/font/FrutigerNextW01-Bold.eot');    src: url('/assets/font/FrutigerNextW01-Bold.eot?#iefix') format('embedded-opentype'),         url('/assets/font/FrutigerNextW01-Bold.woff') format('woff'),         url('/assets/font/FrutigerNextW01-Bold.ttf') format('truetype'),         url('/assets/font/FrutigerNextW01-Bold.svg#FrutigerNextW01-Regular') format('svg');    font-weight: bold;    font-style: normal}
+
+@mixin font-default {
+  font-family: 'frutigernextregular', Helvetica, Arial, sans-serif;
+  *, input, button, text {
+    font-family: inherit;
+  }
+}
+
+@mixin font-bold {
+  font-family: 'frutigernextbold', Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3 {
+  font-weight: normal;
+  margin: 0;
+}
+
+h1 {
+  font-family: 'frutigernextbold';
+  font-size: 48px;
+}

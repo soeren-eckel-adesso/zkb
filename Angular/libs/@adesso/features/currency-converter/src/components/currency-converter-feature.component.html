@@ -1,0 +1,31 @@
+<div class="currency-converter" *ngIf="exchangeRate$ | async as exchangeRate">
+	<h1>{{ "currency-converter" | translate }}</h1>
+	<div class="content-column">
+		<ui-form-input
+			(focusChanged)="firstInputHaseFocus($event)"
+			[type]="inputType.text"
+			[label]="firstCurrency.value ?? ''"
+			[control]="firstCurrencyValue"
+		></ui-form-input>
+		<ui-form-input
+			(focusChanged)="secondInputHaseFocus($event)"
+			[type]="inputType.text"
+			[label]="secondCurrency.value ?? ''"
+			[control]="secondCurrencyValue"
+		></ui-form-input>
+	</div>
+	<div class="content-column">
+		<ui-select
+			[items]="currencyList"
+			(changeValue)="firstCurrency.setValue($event.toString())"
+			[selectedId]="firstCurrency.value ?? ''"
+		></ui-select>
+		<ui-select
+			[items]="currencyList"
+			(changeValue)="secondCurrency.setValue($event.toString())"
+			[selectedId]="secondCurrency.value ?? ''"
+		></ui-select>
+	</div>
+	<div class="content-column exchange-rate">{{ "exchange-rate" | translate }}: {{ exchangeRate }}</div>
+</div>
+

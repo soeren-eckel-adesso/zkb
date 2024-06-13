@@ -1,0 +1,27 @@
+<div class="main-content-background">
+	<div class="inner-content-area">
+		<ng-container *ngIf="quoteStreamUnderlying$ | async as quoteStreamUnderlying">
+			<ng-container *ngIf="pageConfig$ | async as pageConfig">
+				<feature-instrument-detail-header
+					[instrument]="instrument"
+					[underlying]="underlying"
+					[breadCrumbItems]="pageConfig.breadCrumbItems"
+					[chartQuoteBoxValues]="pageConfig.chartQuoteBoxValues"
+					[instrumentHeader]="pageConfig.instrumentHeader"
+					[underlyingChartQuoteBoxValues]="quoteStreamUnderlying"
+				></feature-instrument-detail-header>
+			</ng-container>
+		</ng-container>
+	</div>
+	<div class="text-center d-none d-xl-block" style="margin-top: 96px">
+		<img src="assets/simulator.png" />
+	</div>
+	<div class="bg-light p-4 d-none d-xl-block" style="margin-top: 96px">
+		<h2>Alternative {{ instrument?.base?.name }}</h2>
+		<p class="mb-4">Mit ähnlicher Seitwärtsrendite.</p>
+		<img src="assets/table.png" />
+	</div>
+	<div class="d-none d-xl-block" style="margin-top: 96px">
+		<img src="assets/article.png" />
+	</div>
+</div>

@@ -1,0 +1,4 @@
+{
+  "name": "@<%= customer %>/ui-<%= name %>",
+  "version": "0.0.1"
+}

@@ -1,0 +1,6 @@
+@import "../../styles/styles";
+
+textarea {
+  resize: vertical;
+  width: calc(100% - 10px);
+}

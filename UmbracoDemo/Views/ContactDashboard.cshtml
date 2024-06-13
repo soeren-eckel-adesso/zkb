@@ -1,0 +1,23 @@
+﻿@inherits UmbracoViewPage<ContentModels.ContactDashboard>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Forms.Web
+@{
+    Layout = "Master.cshtml";
+}
+
+@Html.RenderUmbracoFormDependencies()
+
+@{
+    var currentPage = Umbraco.AssignedContentItem;
+}
+
+<div class="row">
+    <div class="col-12">
+        <h1>@currentPage.Value("title")</h1>
+        <h5>@currentPage.Value("subtitle")</h5>
+    </div>
+    <div class="col-sm-12 col-lg-8 offset-lg-2">
+        <div class="py-3">@currentPage.Value("bodyHeader")</div>
+        <div>@currentPage.Value("bodyForm")</div>
+    </div>
+</div>

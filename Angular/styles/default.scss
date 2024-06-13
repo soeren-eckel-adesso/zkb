@@ -1,0 +1,22 @@
+@import "variables";
+.clear {
+	clear: both;
+}
+
+.dottedText {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@media #{$onDesktop} {
+	.hide-desktop {
+		display: none;
+	}
+}
+
+@media #{$onMobile} {
+	.hide-mobile {
+		display: none;
+	}
+}

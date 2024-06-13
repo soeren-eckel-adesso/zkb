@@ -1,0 +1,14 @@
+<feature-carousel-with-search [slides]="slides"></feature-carousel-with-search>
+
+<div class="inner-content-area">
+  <div class="content-columns">
+    <div class="content-column">
+      <ui-instrument-list *ngIf="nobleMetals$" [listItems]="nobleMetals$ | async" [headline]="'noblen-metals-headline' | translate" [tableType]="tableType$"></ui-instrument-list>
+      <ui-instrument-list *ngIf="fuel$" [listItems]="fuel$ | async" [headline]="'fuel-headline' | translate" [tableType]="tableType$"></ui-instrument-list>
+      <ui-instrument-list *ngIf="industrialMetals$" [listItems]="industrialMetals$ | async" [headline]="'industrial-metals-headline' | translate" [tableType]="tableType$"></ui-instrument-list>
+    </div>
+    <div class="content-column">
+      <ui-instrument-list *ngIf="energy$" [listItems]="energy$ | async" [headline]="'energy-headline' | translate" [tableType]="tableType$"></ui-instrument-list>
+    </div>
+  </div>
+</div>

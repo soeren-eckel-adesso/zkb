@@ -1,0 +1,36 @@
+@import "../../../../../../styles/default.scss";
+.breadcrumb-area {
+	width: 100%;
+}
+
+.search-area {
+	width: 100%;
+}
+
+@media #{$onDesktop} {
+	.breadcrumb-area {
+		width: calc(100% - 320px);
+		float: left;
+	}
+
+	.search-area {
+		width: 300px;
+		float: right;
+	}
+}
+
+.documents {
+	&-section {
+		margin-top: 6rem;
+	}
+
+	&-title {
+		margin-bottom: 1rem;
+	}
+
+	&-container {
+		font-size: 1rem;
+		padding: 1rem 0;
+		border-bottom: 1px solid #eff5ff;
+	}
+}

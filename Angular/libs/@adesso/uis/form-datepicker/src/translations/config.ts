@@ -1,0 +1,25 @@
+import { TranslationModel } from "@base/util-translation-manager";
+
+export const translationConfig: TranslationModel[] = [
+  { term: "dateFormat", deDe: "DD.MM.YYYY", enUs: "enUS" },
+  { term: "take", deDe: "Übernehmen", enUs: "take" },
+  { term: "Mo", deDe: "Mo", enUs: "Mo" },
+  { term: "Tu", deDe: "Di", enUs: "Tu" },
+  { term: "We", deDe: "Mi", enUs: "We" },
+  { term: "Th", deDe: "Do", enUs: "Th" },
+  { term: "Fr", deDe: "Fr", enUs: "Fr" },
+  { term: "Sa", deDe: "Sa", enUs: "Sa" },
+  { term: "Su", deDe: "So", enUs: "Su" },
+  { term: "Jan", deDe: "Januar", enUs: "January" },
+  { term: "Feb", deDe: "Februar", enUs: "February" },
+  { term: "Mar", deDe: "März", enUs: "March" },
+  { term: "Apr", deDe: "April", enUs: "April" },
+  { term: "May", deDe: "Mai", enUs: "May" },
+  { term: "Jun", deDe: "Juni", enUs: "June" },
+  { term: "Jul", deDe: "Juli", enUs: "July" },
+  { term: "Aug", deDe: "August", enUs: "August" },
+  { term: "Sep", deDe: "September", enUs: "September" },
+  { term: "Oct", deDe: "Oktober", enUs: "October" },
+  { term: "Nov", deDe: "November", enUs: "November" },
+  { term: "Dec", deDe: "Dezember", enUs: "December" },
+];

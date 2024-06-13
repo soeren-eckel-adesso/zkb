@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'FrutigerLTPro';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../fonts/FrutigerLTProBlack.otf');
+}
+
+@font-face {
+  font-family: 'FrutigerLTProLight';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../fonts/FrutigerLTProLight.otf');
+}
+
+@font-face {
+  font-family: 'FrutigerLTProCondensed';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../fonts/FrutigerLTProCondensed.otf');
+}
+
+@font-face {
+  font-family: 'FrutigerLTProRoman';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../fonts/FrutigerLTProRoman.otf');
+}
+
+
+html, body {
+  font-family: 'FrutigerLTProRoman', 'Helvetica', 'sans-serif';
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+.fs-10 {
+  font-size: $fs-10 !important;
+}
+
+.fs-12 {
+  font-size: $fs-12 !important;
+}
+
+.fs-14 {
+  font-size: $fs-14 !important;
+}
+
+.fs-16 {
+  font-size: $fs-16 !important;
+}
+
+.fs-18 {
+  font-size: $fs-18 !important;
+}

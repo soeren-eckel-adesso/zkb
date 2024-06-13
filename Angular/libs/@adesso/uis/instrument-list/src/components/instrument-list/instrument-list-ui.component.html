@@ -1,0 +1,11 @@
+<ng-template *ngIf="listItemsValue == null || listItemsValue.length == 0; else table">
+  {{'no-data' | translate}}
+</ng-template>
+<ng-template #table>
+  <ui-content-box [headline]="headline">
+    <ui-basic-instrument-table [listItems]="listItemsValue" *ngIf="tableType === tableTypes.basic"></ui-basic-instrument-table>
+    <ui-performance-instrument-table [listItems]="listItemsValue" *ngIf="tableType === tableTypes.performance || tableType === tableTypes.performanceOneYear"></ui-performance-instrument-table>
+    <ui-order-instrument-table [listItems]="listItemsValue" *ngIf="tableType === tableTypes.order"></ui-order-instrument-table>
+  </ui-content-box>
+</ng-template>
+{{logger.uiUpdate("InstrumentListUiComponent")}}

@@ -1,0 +1,25 @@
+@import "../../../../../../styles/content-areas.scss";
+
+@media #{$onDesktop} {
+  .double-content {
+    .first-content,
+    .second-content {
+      width: calc(50% - 10px);
+    }
+
+    .first-content {
+      float: left;
+    }
+
+    .second-content {
+      float: right;
+    }
+  }
+}
+
+.carousel-search {
+  .search {
+    margin-top: -30px;
+    margin-bottom: 30px;
+  }
+}

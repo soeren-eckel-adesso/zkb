@@ -1,0 +1,15 @@
+export enum FundTypeFocusEnum {
+  europe = "Europa",
+  topics = "Themen",
+  global = "Global",
+  asia = "Asien",
+  shareAndBond = "Aktien & Anleihen",
+  emergingMarkets = "Emerging Markets ",
+  usa = "Nordamerika/USA ",
+  primaryBond = "primär Anleihen",
+  primaryShare = "primär Aktien",
+  absoluteReturn = "Absolute Return",
+  latin = "Lateinamerika ",
+  africa = "Mittlerer Osten/Afrika ",
+  australia = "Australien",
+}

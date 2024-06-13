@@ -1,0 +1,21 @@
+<div class="carousel-container">
+  <div class="carousel my-carousel carousel--translate">
+    <input
+      class="carousel__activator"
+      type="radio"
+      name="carousel"
+      *ngFor="let slide of slides; index as i; first as isFirst" [id]="idPrefix + i" checked="{{isFirst == true ? 'checked' : ''}}"/>
+    <ng-container *ngIf="slides.length > 1">
+      <div class="carousel__controls"  *ngFor="let slide of slides; index as i;">
+        <label class="carousel__control carousel__control--backward" [for]="getBackId(i)"></label>
+        <label class="carousel__control carousel__control--forward" [for]="getNextId(i)"></label>
+      </div>
+    </ng-container>
+    <div class="carousel__track">
+      <li class="carousel__slide" *ngFor="let slide of slides"  style="background-image: url({{slide.src}});"></li>
+    </div>
+    <div class="carousel__indicators" *ngIf="slides.length > 1">
+      <label class="carousel__indicator"  *ngFor="let slide of slides; index as i" [for]="idPrefix + i"></label>
+    </div>
+  </div>
+</div>

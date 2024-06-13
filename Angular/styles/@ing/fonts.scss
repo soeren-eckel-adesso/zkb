@@ -1,0 +1,13 @@
+@mixin font-default {
+	font-family: "INGMe", "INGMeWebRegular", "Helvetica", "sans-serif";
+	*,
+	input,
+	button,
+	text {
+		font-family: inherit;
+	}
+}
+
+@mixin font-bold {
+	font-family: "INGMe", "INGMeWebRegular", "Helvetica", "sans-serif";
+}

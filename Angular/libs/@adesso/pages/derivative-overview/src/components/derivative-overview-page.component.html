@@ -1,0 +1,13 @@
+<div class="breadcrumb-area d-none d-lg-block">
+	<ui-breadcrumb [items]="getBreadCrumbItems()"></ui-breadcrumb>
+</div>
+<div class="content">
+	<h1 *ngIf="name !== 'Suche'">{{ name }}</h1>
+	<feature-suggest-search [isSearch]="name === 'Suche'" [design]="suggestSearchDesign"></feature-suggest-search>
+
+	<div class="content-columns" *ngIf="name !== 'Suche'">
+		<div class="content-column">
+			<ui-instrument-list [listItems]="derivate$ | async" [tableType]="tableType"></ui-instrument-list>
+		</div>
+	</div>
+</div>

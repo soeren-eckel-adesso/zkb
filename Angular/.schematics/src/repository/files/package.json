@@ -1,0 +1,4 @@
+{
+  "name": "@<%= customer %>/repository-<%= name %>",
+  "version": "0.0.1"
+}

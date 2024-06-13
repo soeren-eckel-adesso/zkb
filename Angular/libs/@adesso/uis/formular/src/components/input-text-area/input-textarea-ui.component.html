@@ -1,0 +1,4 @@
+<div class="form-label" *ngIf="label">{{label}}</div>
+<div class="form-frame">
+  <textarea [rows]="rows" type="text" [(ngModel)]="value" (keyup)="inputChanged()" [placeholder]="placeholder" (keyup.enter)="submitted.emit()"></textarea>
+</div>

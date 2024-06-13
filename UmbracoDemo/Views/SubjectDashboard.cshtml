@@ -1,0 +1,88 @@
+﻿@inherits UmbracoViewPage<ContentModels.SubjectDashboard>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models
+@{
+    Layout = "Master.cshtml";
+}
+
+@{
+    var currentPage = Umbraco.AssignedContentItem;
+    var categoryString = string.Empty;
+    if (Context.Request.Method == "GET")
+    {
+        categoryString = Context.Request.Query["category"].FirstOrDefault() ?? string.Empty;
+    }
+    int.TryParse(categoryString, out var category);
+
+    var selection = Umbraco.Content(currentPage.Key)!
+        .ChildrenOfType("subjectCategory")!
+        .Where(x => x.IsVisible())
+        .OrderByDescending(x => x.UpdateDate);
+}
+
+<nav aria-label="breadcrumb" class="d-none d-lg-block">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Startseite</a>
+        </li>
+
+        @if (category == 0)
+        {
+            <li class="breadcrumb-item" aria-current="page">
+                <span class="breadcrumb-item active">@currentPage.Value("title")</span>
+            </li>
+        }
+        else
+        {
+            <li class="breadcrumb-item" aria-current="page">
+                <a style="text-decoration: none" href="/themen">
+                    <span class="topic-breadcrumb">@currentPage.Value("title")</span>
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                @(selection.FirstOrDefault(s => s.Id == category)?.Name ?? string.Empty)
+            </li>
+        }
+    </ol>
+</nav>
+
+<h1>@currentPage.Value("title")</h1>
+
+<div class="mb-3 text-nowrap hide-scrollbar overflow-auto">
+    <a style="text-decoration: none" href="/themen">
+        <span class="badge badge-pill p-2 mb-2 @(category == 0 || selection.All(s => s.Id != category) ? "badge-info" : "badge-primary")">Alle (@selection.Sum(item => item.Children.Count()))</span>
+    </a>
+    @foreach (var item in selection)
+    {
+        <a style="text-decoration: none" href="/themen?category=@item.Id">
+            <span class="badge badge-pill p-2 mb-2 @(category == item.Id ? "badge-info" : "badge-primary")">@item.Name (@item.Children.Count())</span>
+        </a>
+    }
+</div>
+
+<div class="row rg-3">
+    @foreach (var item in (category == 0 || selection.All(s => s.Id != category) ? selection : selection
+        .Where(c => c.Id == category)).SelectMany(c => c.Children).OrderByDescending(a => a.CreateDate))
+    {
+        <div class="col-md-4">
+            <div class="card h-100">
+                @{
+                    var similarArticleCoverImage = item.Value<MediaWithCrops>("coverImage");
+                    var similarArticleCoverImageUrl = similarArticleCoverImage is not null ? similarArticleCoverImage.MediaUrl() : "/img/default.jpg";
+                }
+                <img class="card-img-top"
+                     src="@similarArticleCoverImageUrl"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Value("title")</h5>
+                    <p class="card-text">
+                        @item.Value("teaser")
+                    </p>
+                    <a href="@item.Url()" class="stretched-link">
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

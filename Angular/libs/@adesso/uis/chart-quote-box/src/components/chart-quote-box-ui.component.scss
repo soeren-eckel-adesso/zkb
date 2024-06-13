@@ -1,0 +1,120 @@
+@import "../../../../../../styles/variables.scss";
+@import "../../../../../../styles/default.scss";
+@import "../../../../../../styles/fonts.scss";
+
+.ui-chart-quote-box {
+	@include font-default;
+	background-color: $color-light-box-background;
+	width: 100%;
+	border-bottom: 2px solid $color-limiter;
+	border-left: 1px solid $color-limiter;
+	border-right: 1px solid $color-limiter;
+	@include contentDistanceBottom;
+}
+
+.chart-area {
+	margin-top: 80px;
+}
+
+.quote-area-sell,
+.quote-area-buy {
+	width: 50%;
+	float: left;
+}
+
+.quote-type,
+.quote-amount {
+	font-size: $font-size-content;
+	color: $color-default;
+}
+
+.quote-price {
+	padding: 5px 0;
+	font-size: $font-size-headline-h2;
+	font-weight: bold;
+	color: $color-default;
+}
+
+.ui-button {
+	margin-top: 20px;
+	margin-bottom: 25px;
+	border-radius: 4px;
+	color: #ffffff;
+	padding: 10px 20px 8px;
+	cursor: pointer;
+	width: 100px;
+	text-align: center;
+}
+
+.quote-area-sell .ui-button {
+	background-color: $color-sell-button-background;
+	color: $color-sell-button-font;
+}
+
+.quote-area-buy .ui-button {
+	background-color: $color-buy-button-background;
+	color: $color-buy-button-font;
+}
+
+.key-value-label,
+.key-value-value {
+	line-height: 28px;
+}
+
+.key-value-label {
+	color: $color-body-background;
+	font-weight: bold;
+}
+
+.chart-time-selection {
+	width: 100%;
+	margin-bottom: 5px;
+	td {
+		border: 1px solid $color-limiter;
+		border-right: none;
+		cursor: pointer;
+		text-align: center;
+		line-height: 24px;
+		font-size: 14px;
+		padding-top: 6px;
+		color: $color-default;
+	}
+	td:last-of-type {
+		border-right: 1px solid $color-limiter;
+	}
+	td.time-active {
+		font-weight: bold;
+		cursor: default;
+	}
+}
+@media #{$onMobile} {
+	.chart-time-selection {
+		td {
+			border-top: none;
+			border-bottom: 2px solid $color-limiter;
+		}
+		td:first-of-type {
+			border-left: none;
+		}
+		td:last-of-type {
+			border-right: none;
+		}
+	}
+}
+.chart-image {
+	width: 100%;
+}
+
+.chart-box {
+	@include chartBoxStyles;
+	margin-bottom: 36px;
+}
+
+.hide-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}

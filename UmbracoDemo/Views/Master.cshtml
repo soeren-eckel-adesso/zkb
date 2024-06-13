@@ -1,0 +1,65 @@
+﻿@inherits UmbracoViewPage
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/blockgridlayout.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/fonts/bootstrap-icons.css">
+
+    <title>Zürcher Kantonalbank - @Umbraco.AssignedContentItem.Name</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S617W495Q8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-S617W495Q8');
+    </script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    @await Html.PartialAsync("TopNavigation")
+    @await Html.PartialAsync("MainNavigation")
+    <div class="content">
+        @RenderBody()
+    </div>
+    @await Html.PartialAsync("Footer")
+</div>
+
+<div id="cookie-popup-overlay"></div>
+<div id="cookie-popup">
+    <div class="row" id="cookie-popup-content">
+        <div class="col-12 col-lg-6 text-center text-lg-left">
+            Wir verwenden Cookies auf unseren Websites, um diese laufend für Sie zu verbessern.
+            Mit dem Klick auf «Allen cookies zustimmen» erklären Sie sich mit der Verwendung von Cookies gemäss unserer Cookie Policy einverstanden.
+            Mit dem Klick auf «Nur erforderliche» werden lediglich Cookies gesetzt, die für die Verwendung der Website notwendig sind.
+        </div>
+        <div class="col-12 col-lg-6 text-center text-lg-right align-self-center">
+            <button class="btn btn-outline-primary mr-3" onclick="acceptCookies()">Nur erforderliche</button>
+            <button class="btn btn-primary" onclick="acceptCookies()">Allen Cookies zustimmen</button>
+        </div>
+
+    </div>
+
+</div>
+</body>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/popper.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/cookies.js"></script>
+
+
+</html>

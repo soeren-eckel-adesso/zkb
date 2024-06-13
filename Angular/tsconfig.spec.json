@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "jest","jasmine"
+    ],
+    "allowJs": true
+  },
+  "files": [
+    "test-setup.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "libs/**/*.spec.ts",
+    "apps/**/*.spec.ts",
+    "libs/**/*.d.ts",
+    "apps/**/*.d.ts"
+  ]
+}

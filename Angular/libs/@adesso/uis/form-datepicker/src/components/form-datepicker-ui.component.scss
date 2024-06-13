@@ -1,0 +1,207 @@
+@import "../../../../../../styles/variables.scss";
+@import "../../../../../../styles/fonts.scss";
+
+.form-datepicker {
+  @include font-default;
+}
+
+.currentDate{
+  cursor: pointer;
+  color: $date-picker-day-names-color;
+
+  img{
+    width: 14px;
+    height: 16px;
+  }
+}
+
+.float-right {
+  float: right;
+}
+
+.day-list {
+  float: left;
+  width: 35px;
+  height: 30px;
+  text-align: center;
+  margin-right: 7px;
+  margin-bottom: 15px;
+
+  .last-moth-day {
+    color: $date-picker-disabled-font-color;
+  }
+
+  .selected-day {
+    background-color: $date-picker-font-color;
+    width: 35px;
+    height: 30px;
+    text-align: center;
+    color: $color-active-font;
+    border-radius: 50%;
+    padding-top: 5px;
+    margin-top: -5px;
+  }
+}
+
+.day-name {
+  color: $date-picker-day-names-color;
+  height: 22px;
+  font-size: 14px;
+}
+
+.day {
+  color: $date-picker-font-color;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.day-list-container {
+  width: 294px;
+  height: 289px;
+  margin-right: 6px;
+  margin-left: 6px;
+}
+
+.calender {
+  border: 1px solid $date-picker-border-color;
+  border-radius: 10px;
+  width: 300px;
+  height: 440px;
+  background-color: $color-light-box-background;
+  position: absolute;
+  top: 50px;
+}
+
+.calender-right{
+  right: 5px;
+}
+
+.month-select {
+  float: left;
+  width: 50%;
+}
+
+.year-select {
+  float: right;
+  width: 50%;
+
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.arrow-up {
+  width: 15px;
+  height: 15px;
+  border-top: 1px solid $date-picker-border-color;
+  border-left: 1px solid $date-picker-border-color;
+  transform: rotate(45deg);
+  background-color: $color-light-box-background;
+  position: absolute;
+  top: -9px;
+}
+
+.arrow-up-right{
+  right: 30px;
+}
+
+.arrow-up-left{
+  left: 30px;
+}
+
+.ui-button {
+  background-color: $date-picker-font-color;
+  color: $date-picker-button-color;
+  cursor: pointer;
+  height: 28px;
+  width: 141px;
+  margin: 20px auto;
+  text-align: center;
+  border-radius: 20px;
+  font-size: 12px;
+  padding-top: 12px;
+}
+
+.calender-header {
+  margin: 20px 14px;
+  height: 28px;
+  color: $date-picker-font-color;
+}
+
+.calender-select {
+  cursor: pointer;
+  height: 28px;
+  font-size: 22px;
+}
+
+.arrow-down{
+  width: 15px;
+  height: 15px;
+  border-bottom: 1px solid $date-picker-font-color;
+  border-right: 1px solid $date-picker-font-color;
+  transform: rotate(45deg);
+  background-color: $color-light-box-background;
+}
+
+.month-arrow{
+  float: left;
+  margin-left: 15px;
+}
+
+.selected-month{
+  float: left;
+}
+
+.year-arrow{
+  float: right;
+  margin-left: 15px;
+}
+
+.select-options{
+  margin-top: 20px;
+  overflow-y: auto;
+  height: 377px;
+  color: $date-picker-font-color;
+  margin-left: 11px;
+  margin-right: 16px;
+}
+
+.select-option{
+  cursor: pointer;
+  font-size:22px;
+  margin-bottom: 19px;
+}
+
+.selected-option{
+  margin-right: 26px;
+  float: right;
+}
+
+.close-button{
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 25px;
+  right: 16px;
+  cursor: pointer;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $date-picker-scroll-bar-background-color;
+  margin-top: 46px;
+  height: 299px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $date-picker-font-color;
+}

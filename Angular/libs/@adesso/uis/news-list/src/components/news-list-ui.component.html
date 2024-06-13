@@ -1,0 +1,9 @@
+<ui-content-box [headline]="headline" *ngIf="items">
+  <div class="news-list">
+    <a *ngFor="let item of items" class="news-item" [routerLink]="[pageType.newsDetailPage | translate : {newsId: item.id}]">
+      <span class="news-date">{{item.date | dateOrTime}}</span>
+      <span class="news-headline">{{item.headline}}</span>
+    </a>
+  </div>
+</ui-content-box>
+{{logger.uiUpdate("NewsListUiComponent")}}

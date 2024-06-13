@@ -1,0 +1,7 @@
+@import "../../../../../../styles/variables.scss";
+@import "../../../../../../styles/fonts.scss";
+@import "../../../../../../styles/content-areas";
+.<%= name %> {
+ @include font-default;
+}
+

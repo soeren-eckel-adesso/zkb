@@ -1,0 +1,120 @@
+﻿@inherits UmbracoViewPage<ContentModels.SubjectArticle>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using System.Globalization
+@using Umbraco.Cms.Core.Models
+@{
+    Layout = "Master.cshtml";
+}
+
+@{
+    var currentPage = Umbraco.AssignedContentItem;
+    var parentPage = currentPage.Parent !;
+    var grandparentPage = parentPage.Parent !;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item d-none d-lg-inline-block">
+            <a href="/">Startseite</a>
+        </li>
+        <li class="breadcrumb-item d-none d-lg-inline-block">
+            <a href="@grandparentPage.Url()">@grandparentPage.Value("title")</a>
+        </li>
+        <li class="breadcrumb-item d-lg-hidden">
+            <a style="text-decoration: none" href="@(grandparentPage.Url() + "?category=" + parentPage.Id)">
+                <span class="topic-breadcrumb">@parentPage.Value("title")</span>
+            </a>
+        </li>
+        <li class="breadcrumb-item d-none d-lg-block active text-truncate w-50" aria-current="page">@currentPage.Value("title")</li>
+    </ol>
+</nav>
+
+<h1 class="subject-title">@currentPage.Value("title")</h1>
+
+<div class="row">
+    <div class="col offset-md-3 offset-xl-2">
+        <p class="subject-article-creation-date mb-4">
+            @Umbraco.AssignedContentItem.CreateDate.ToString("dd. MMMM yyyy", new CultureInfo("de-DE")) |
+            <span style="cursor: pointer" id="copy-article">
+                <i id="share-button" class="bi bi-share"></i>
+            </span>
+        </p>
+        <div class="subject-article-teaser">
+            @currentPage.Value("teaserTextArtikeldetailseite")
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-3 col-xl-2 d-none d-md-block article-sidebar">
+        <div class="subject-toc">
+            <b class="subject-toc-title">Auf dieser Seite:</b>
+            <ul class="subject-toc-list"></ul>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-9 col-xl-10">
+        @{
+            var typedMultiMediaPicker = currentPage.Value<MediaWithCrops>("coverImage");
+            if (typedMultiMediaPicker is not null)
+            {
+                <img src="@typedMultiMediaPicker.MediaUrl()" class="img-fluid subject-article-cover-image" alt="subject article cover"/>
+            }
+        }
+        <div id="content-body" class="mt-5">@await Html.GetBlockGridHtmlAsync(currentPage, "gridContent")</div>
+    </div>
+</div>
+
+@{
+    var selection = Umbraco.Content(parentPage.Key)!
+        .ChildrenOfType("subjectArticle")!
+        .Where(x => x.IsVisible() && x.Name != currentPage.Name)
+        .OrderByDescending(x => x.UpdateDate);
+}
+
+@await Html.PartialAsync("SubjectArticleReferences", selection)
+
+@Model.Value("makros")
+
+@if (Model.Value("callToAction") != null)
+{
+    var ctaModelProps = (Model.Value("callToAction") as PublishedContentModel).Properties;
+    var ctaHeadline = ctaModelProps.FirstOrDefault(p => p.Alias == "ctaHeadline").GetValue().ToString();
+    var ctaContent = ctaModelProps.FirstOrDefault(p => p.Alias == "ctaContent").GetValue().ToString();
+    var ctaButton = ctaModelProps.FirstOrDefault(p => p.Alias == "ctaButton").GetValue().ToString();
+    var ctaLink = ctaModelProps.FirstOrDefault(p => p.Alias == "ctaLink").GetValue();
+    var ctaImageId = ctaModelProps.FirstOrDefault(p => p.Alias == "ctaImageId").GetValue();
+    var ctaLinkUmbraco = "umb://document/" + (ctaLink as PublishedContentModel).Key.ToString().Replace("-", "");
+    var ctaImageUmbraco = "umb://media/" + (ctaImageId as MediaWithCrops).Key.ToString().Replace("-", "");
+
+    @await Umbraco.RenderMacroAsync("CallToAction", new {ctaHeadline, ctaContent, ctaButton, ctaLink = ctaLinkUmbraco, ctaImageId = ctaImageUmbraco})
+}
+
+<script>
+document.getElementById("copy-article").addEventListener("click", function() {
+    const shareButton = document.getElementById("share-button")
+    navigator.clipboard.writeText(window.location.href)
+    .then(function() {
+        shareButton.classList.remove("bi-share");
+        shareButton.classList.add("bi-clipboard-check");
+    })
+});
+
+const contentBodyDiv = document.getElementById('content-body');
+const h2Elements = contentBodyDiv.querySelectorAll('h2');
+const ulElement = document.querySelector('.subject-toc-list');
+
+h2Elements.forEach((h2) => {
+  const uniqueId = h2.outerText.replace(/\s/g, '_').substring(0, 10).toLowerCase();
+  h2.setAttribute('id', uniqueId);
+  
+  const liElement = document.createElement('li');
+    const anchorElement = document.createElement('a');
+    anchorElement.setAttribute('href', '#' + uniqueId);
+    anchorElement.textContent = h2.textContent;
+    liElement.appendChild(anchorElement);
+    liElement.classList.add("subject-toc-list-item");
+  
+    ulElement.appendChild(liElement);
+});
+
+</script>

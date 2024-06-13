@@ -1,0 +1,12 @@
+@import "../../../../../../../styles/variables.scss";
+@import "../../../../../../../styles/fonts.scss";
+
+.pieChart {
+  @include font-default;
+  .bg,
+  path {
+    fill: none;
+    stroke-width: 14px;
+    stroke-linecap: round;
+  }
+}

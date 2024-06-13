@@ -1,0 +1,146 @@
+// Colors
+$color-default: #003cb4;
+$color-headline: #003cb4;
+$color-limiter: green;
+$color-content: #565656;
+$color-body-background: #fff;
+$color-content-background: #efefef;
+$color-context-menu-limiter: #e7e7e7;
+$color-light-box-background: #ffffff;
+$color-light-font: #a0a0a0;
+$color-table-background: #eaeaea;
+$color-content-area-background: #f6f6f6;
+$color-active-background: #0098db;
+$color-active-font: #ffffff;
+$color-positive: #003cb4;
+$color-neutral: #003cb4;
+$color-negative: #003cb4;
+$color-customer-primary: #0018a8;
+$color-customer-secondary: rgba(245, 100, 0, 1);
+$color-material-primary: #0018a8;
+$color-material-primary-contrast-font: #ffffff;
+$color-error: red;
+
+// Table styles
+$color-table-header-background: $color-body-background;
+$color-table-header-font: #0018a8;
+$color-table-row-background-even: #ffffff;
+$color-table-row-background-odd: #ffffff;
+$color-table-edit-background: #ffffff;
+$table-border: none;
+
+// Shadows
+$box-shadow: none;
+$box-shadow-2: none;
+
+// Buy/Sell Buttons
+$color-buy-button-background: #0098db;
+$color-buy-button-font: #ffffff;
+$color-sell-button-background: #d71f85;
+$color-sell-button-font: #ffffff;
+
+// Font Sizes
+$font-size-very-small: 11px;
+$font-size-content-small: 14px;
+$font-size-default: 16px;
+$font-size-content: 18px;
+$font-size-content-big: 20px;
+$font-size-headline-h2: 24px;
+$font-size-headline-h1: 32px;
+
+// Template Styles
+$header-height: 66px;
+
+// Responsive Breakpoints
+$onUltraScreen: "screen and (min-width: 1440px)";
+$onBigScreen: "screen and (min-width: 1300px)";
+$onLargeScreen: "screen and (min-width: 1200px)";
+$onDesktop: "screen and (min-width: 769px)";
+$onMobile: "screen and (max-width: 768px)";
+
+// Content Box Styles
+$content-box-background-color: transparent;
+$content-box-padding: 0;
+$content-box-border-radius: 0;
+$content-box-border-top: none;
+$content-box-border-bottom: none;
+$content-box-border-left: none;
+$content-box-border-right: none;
+$content-box-shadow: none;
+
+@mixin contentBoxStyles {
+	background-color: $content-box-background-color;
+	padding: $content-box-padding;
+	border-radius: $content-box-border-radius;
+	border-top: $content-box-border-top;
+	border-bottom: $content-box-border-bottom;
+	border-left: $content-box-border-left;
+	border-right: $content-box-border-right;
+	box-shadow: $content-box-shadow;
+}
+
+// Composition Box Styles
+$composition-box-background-color: #fff;
+$composition-box-padding: 20px;
+$composition-box-border-radius: 0;
+$composition-box-border-top: none;
+$composition-box-border-bottom: none;
+$composition-box-border-left: none;
+$composition-box-border-right: none;
+$composition-box-shadow: none;
+
+@mixin compositionBoxStyles {
+	background-color: $composition-box-background-color;
+	padding: $composition-box-padding;
+	border-radius: $composition-box-border-radius;
+	border-top: $composition-box-border-top;
+	border-bottom: $composition-box-border-bottom;
+	border-left: $composition-box-border-left;
+	border-right: $composition-box-border-right;
+	box-shadow: $composition-box-shadow;
+}
+
+// Chart Box Styles
+$chart-box-background-color: none;
+$chart-box-padding: 20px;
+$chart-box-border-radius: none;
+$chart-box-border-top: none;
+$chart-box-border-bottom: none;
+$chart-box-border-left: none;
+$chart-box-border-right: none;
+$chart-box-shadow: $box-shadow-2;
+
+@mixin chartBoxStyles {
+	background-color: $chart-box-background-color;
+	border-radius: $chart-box-border-radius;
+	border-top: $chart-box-border-top;
+	border-bottom: $chart-box-border-bottom;
+	border-left: $chart-box-border-left;
+	border-right: $chart-box-border-right;
+	box-shadow: $chart-box-shadow;
+}
+
+// Default Mixins
+@mixin contentDistanceBottom {
+	margin-bottom: 64px;
+}
+
+@mixin notSelectable {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
+}
+
+// Date Picker
+$date-picker-font-color: #00a3ef;
+$date-picker-disabled-font-color: #73cdf6;
+$date-picker-day-names-color: #4d4d4d;
+$date-picker-border-color: #a6a6a6;
+$date-picker-button-color: #e9eaeb;
+$date-picker-scroll-bar-background-color: #dee0e2;
+
+// App
+$assetFolder: "";

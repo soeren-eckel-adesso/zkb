@@ -1,0 +1,236 @@
+@import "../../../../../../styles/content-areas.scss";
+@import "../../../../../../styles/fonts.scss";
+@import "../../../../../../styles/variables.scss";
+@import "../../../../../../styles/default.scss";
+
+.header-top {
+  background-color: $color-context-menu-limiter;
+  font-size: 12px;
+  line-height: 24px;
+  color: #22405D;
+}
+
+@media #{$onDesktop} {
+  .header-top {
+    margin-bottom: 30px;
+  }
+}
+.header-seperator {
+  display: inline-block;
+  padding: 0 10px;
+  color: #D5D8D8;
+}
+
+.header-container {
+  position: relative;
+  width: 100%;
+  max-width: 1350px;
+}
+.adesso-logo:hover, .adesso-logo:focus, .adesso-logo:active, .adesso-logo:visited {
+  text-decoration: none;
+}
+
+.adesso-logo {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  z-index: 2;
+  display: block;
+  background-size: cover;
+  height: 24px;
+}
+
+
+@media #{$onDesktop} {
+  .adesso-logo {
+    left: 0px;
+    top: 15px;
+    height: 48px;
+  }
+}
+
+.header {
+  z-index: 42;
+  height: 20px;
+  padding: 15px;
+  position: relative;
+}
+@media #{$onDesktop} {
+  .header {
+    height: 45px;
+    padding: 15px;
+  }
+}
+
+
+.container.adesso-rectangle-wrap {
+  z-index: 42;
+  position: absolute;
+  top: 35px;
+  background-color: transparent;
+  padding-left: 0;
+  width: calc(100% - 350px);
+}
+
+.adesso-rectangle {
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  height: 25px;
+}
+
+@media #{$onDesktop} {
+  .container.adesso-rectangle-wrap {
+    width: calc(100% - 400px);
+  }
+  .adesso-rectangle {
+    top: 40px;
+    height: 25px;
+  }
+}
+
+.adesso-rectangle::before {
+  height: 0;
+  border-top: 25px solid #f4f4f4;
+  border-top: 25px solid #f4f4f4;
+  border-right: 25px solid transparent;
+  float: left;
+  margin-left: 0;
+  content: '';
+  width:100%;
+}
+
+
+.header-menu-header {
+  text-align: right;
+}
+.adesso-language-selection {
+  span {
+    display: inline-block;
+    padding: 5px 20px 5px 0;
+    line-height: 24px;
+    color: #857971;
+    cursor: pointer;
+    font-size: 16px;
+    &.active {
+      color: #0071b9;
+      font-weight: bold;
+    }
+  }
+}
+
+
+.adesso-breadcrumb {
+  position: absolute;
+  top: 105px;
+  left: 20px;
+  z-index: 50;
+  font-size: 14px;
+  color: #857971;
+  a, a:visited, a:hover {
+    text-decoration: none;
+    color: #857971;
+  }
+}
+
+
+.header-menu {
+  overflow: hidden;
+  z-index: 40;
+  background-color: #fDfDfD;
+  position: absolute;
+  width:350px;
+  right:0;
+
+  -webkit-box-shadow: 0px -0px 7px 0px rgba(186,186,186,0.75);
+  -moz-box-shadow: 0px -0px 7px 0px rgba(186,186,186,0.75);
+  box-shadow: 0px -0px 7px 0px rgba(186,186,186,0.75);
+  .header-menu-content {
+    ul {
+      margin-left: 0;
+      padding-left: 0;
+    }
+    li {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 20px;
+      a, span {
+        color: #0071b9;
+        border-bottom: 2px solid #e8e4e1;
+        display: block;
+        width: calc(100% - 40px);
+        text-decoration: none;
+        padding: 1.25rem 0 0.3125rem 0;
+        font-size: 20px;
+        overflow: hidden;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+@media #{$onDesktop} {
+  .header-menu {
+    width: 400px;
+  }
+}
+
+.adesso-main-menu {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 46px;
+  border-bottom: 4px solid #bbb2ac;
+  text-align: center;
+  cursor: pointer;
+  label {
+    display: none;
+  }
+  .adesso-main-menu-item {
+    height: 71px;
+  }
+  .adesso-nav-icon {
+    display: block;
+    width: 50px;
+    text-align: center;
+    padding-top:9px;
+    color: #857971;
+    cursor: pointer;
+  }
+}
+
+@media #{$onDesktop} {
+  .adesso-main-menu {
+    height: 71px;
+    label {
+      display: inline;
+      font-size: 14px;
+      color: #0071b9;
+      cursor: pointer;
+    }
+    .adesso-nav-icon {
+      padding-top:20px;
+      width: 100px;
+    }
+  }
+}
+.adesso-main-menu:hover {
+  border-bottom: 4px solid #f9e700;
+  background-color: #FFFFFF;
+  .adesso-nav-icon {
+    color: #0071b9;
+  }
+}
+.adesso-nav-icon {
+  height: 30px;
+  width: 30px;
+}
+
+@media #{$onDesktop} {
+  .adesso-nav-icon {
+    height: 20px;
+    width: 20px;
+  }
+}
+

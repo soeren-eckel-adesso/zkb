@@ -1,0 +1,11 @@
+<ui-content-box [headline]="headline" *ngIf="items">
+  <div class="analyses-list">
+    <a *ngFor="let item of items" class="analyses-item" [routerLink]="[pageType.analysesDetailPage | translate : {analyseId: item.id}]">
+      <span class="analyses-date">{{item.date | dateOrTime}}</span>
+      <span class="analyses-headline">{{item.headline}}</span>
+      <div class="analyses-recommendation recommendation-{{item.recommendation?.toLowerCase()}}">{{'recommendation-' + item.recommendation?.toLowerCase() | translate}}</div>
+      <div class="analyses-target"><label>{{'priceTarget' | translate}}:</label> {{item.priceTarget | numberFormatter}} {{item.priceCurrency}}</div>
+    </a>
+  </div>
+</ui-content-box>
+{{logger.uiUpdate("AnalysesListUiComponent")}}

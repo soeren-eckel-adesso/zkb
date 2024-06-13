@@ -1,0 +1,33 @@
+@import "../../../../../../styles/variables.scss";
+@import "../../../../../../styles/fonts.scss";
+
+.ui-context-menu-list {
+  @include font-default;
+  box-sizing: border-box;
+}
+
+.ui-context-menu-list-item {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 42px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-decoration: none;
+  padding-left: 13px;
+}
+
+.ui-context-menu-list-main-item {
+  color: $color-default;
+  font-size: 19px;
+  font-weight: bold;
+  border-bottom: 1px solid $color-context-menu-limiter;
+}
+
+.ui-context-menu-list-sub-item {
+  color: $color-content;
+  font-size: 15px;
+  padding-left: 23px;
+  border-bottom: 1px solid $color-context-menu-limiter;
+}
+

@@ -1,0 +1,19 @@
+<div class="chartBox" #chartBox  (window:resize)="onResize()">
+  <ng-container *ngIf="this.chartWidth && this.data">
+    <svg *ngIf="viewBox" [attr.viewBox]="viewBox" class="chart" [attr.width]="chartWidth + 'px'" [attr.height]="chartHeight + 'px'">
+      <ng-container *ngIf="yAxisValues">
+        <g>
+          <text *ngFor="let yAxisValue of yAxisValues" [attr.x]="yAxisValue.x" [attr.y]="yAxisValue.y"  text-anchor="end" opacity="1">
+            <tspan>{{yAxisValue.value}}</tspan>
+          </text>
+        </g>
+        <g>
+          <path *ngFor="let yAxisValue of yAxisValues" fill="none" stroke="#e6e6e6" stroke-width="1" [attr.d]="yAxisValue.d" opacity="0.8"></path>
+        </g>
+      </ng-container>
+      <path fill="none" stroke="#c6cbcd" stroke-width="1" [attr.d]="'M ' + yLabelWith +  ' 0 L ' + yLabelWith +  ' ' + this.chartHeight" opacity="1"></path>
+      <path fill="none" stroke="#c6cbcd" stroke-width="1" [attr.d]="'M ' + yLabelWith +  ' ' + this.chartHeight + ' L ' + this.chartWidth +  ' ' + this.chartHeight" opacity="1"></path>
+      <path [attr.d]="chartPath" stroke="#7CB5EC" stroke-width="2" data-z-index="2" />
+    </svg>
+  </ng-container>
+</div>

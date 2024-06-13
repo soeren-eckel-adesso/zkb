@@ -1,0 +1,69 @@
+﻿@using System.Net
+@inherits Umbraco.Cms.Web.Common.Macros.PartialViewMacroPage
+
+@{
+    var guid = Guid.NewGuid();
+}
+
+<div id="highchart-marcro-@guid"></div>
+
+<script>
+
+Highcharts.setOptions({
+    colors:  [ "#003CB4", "#EFF5FF", "#000078", "#00000029", "#82E1E1", "#006CFF", "#00BEC8", "#D3E3FD"]
+});
+
+// Build the chart
+Highcharts.chart('highchart-marcro-@guid', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: @Html.Raw(Convert.ToInt32(Model.MacroParameters["piChartColumnChart"]) == 1 ? "'column'" : "'pie'")
+    },
+    title: {
+        text: '@Model.MacroParameters["chartTitle"]',
+        align: 'center'
+    },
+    tooltip: {
+        format: '{point.name}: <b>{point.y:.2f}%</b>',
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    xAxis: {
+        crosshair: true,
+        labels: {
+            style: {
+                fontSize: '14px'
+            }
+        },
+        type: 'category'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.percentage:.2f} %',
+                connectorColor: 'silver'
+            },
+            showInLegend: true
+        },
+        column: {
+            stacking: 'normal',
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: '@Model.MacroParameters["chartSeriesTitle"]',
+        colorByPoint: true,
+        data: @Html.Raw(WebUtility.HtmlDecode(Model.MacroParameters["chartData"].ToString()).Replace("key", "name").Replace("value\":\"", "y\":").Replace("\"}", "}")),
+        showInLegend:  @(Convert.ToInt32(Model.MacroParameters["piChartColumnChart"]) == 1 ? "false" : "true")
+    }]
+})
+
+</script>

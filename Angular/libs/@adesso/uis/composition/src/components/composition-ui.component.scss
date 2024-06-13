@@ -1,0 +1,81 @@
+@import "../../../../../../styles/variables.scss";
+@import "../../../../../../styles/default.scss";
+@import "../../../../../../styles/fonts.scss";
+
+* {
+  box-sizing: border-box;
+}
+.ui-composition {
+  @include font-default;
+  @include contentDistanceBottom;
+}
+
+.chart-box {
+  height: 238px;
+  overflow: hidden;
+  width: 238px;
+  margin:0 auto;
+}
+
+.ui-composition-table-box {
+  @include compositionBoxStyles;
+  padding: 120px 10px 10px 10px;
+  margin-top: -120px;
+  width: 100%;
+
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+    color: $color-content;
+    table-layout: fixed;
+    .selected {
+      td {
+        background-color: #EAEAEA !important;
+      }
+    }
+    tr {
+      td:first-of-type {
+        width: calc(100% - 80px);
+      }
+      td:last-of-type {
+        width: 80px;
+      }
+    }
+    td {
+      white-space: nowrap;
+      padding-top: 4px;
+      border-bottom: 1px solid $color-limiter;
+      line-height: 30px;
+      position: relative;
+    }
+    tr:last-of-type td {
+      border-bottom: none;
+    }
+  };
+  tr td:nth-of-type(1) {
+    width: calc(100% - 75px);
+    font-weight: bold;
+    color: $color-content;
+  }
+  tr td:nth-of-type(2) {
+    width: 75px;
+    text-align: right;
+  }
+}
+
+.color-box {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+h2.headline {
+  color: #002244;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}

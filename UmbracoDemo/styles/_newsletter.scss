@@ -1,0 +1,50 @@
+﻿@media screen and (min-width: 1200px) {
+  .newsletter {
+    .form-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .control-label {
+      flex: 1;
+    }
+
+    .umbraco-forms-field-wrapper {
+      flex: 4;
+    }
+  }
+}
+
+.newsletter {
+  .control-label {
+    padding-left: 0;
+    max-width: none;
+  }
+
+  .col-sm-offset-2 {
+    padding: 0;
+  }
+  
+  .newsletterheader {
+    padding-top: 29px;
+    margin-right: 15px;
+    margin-bottom: 0;
+    border-top: 2px solid #003cb4
+  }
+
+  .newsletterkategorie {
+    padding-bottom: 20px;
+    margin-bottom: 34px;
+    margin-right: 15px;
+    border-bottom: 2px solid #003cb4
+  }
+  
+  .newsletterlegalnotice {
+    padding-top: 29px;
+    margin-top: 34px;
+    margin-right: 15px;
+    margin-bottom: 0;
+    border-top: 2px solid #003cb4
+  }
+}

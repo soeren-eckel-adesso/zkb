@@ -1,0 +1,48 @@
+<div class="breadcrumb-area d-none d-lg-block">
+	<ui-breadcrumb [items]="getBreadCrumbItems()"></ui-breadcrumb>
+</div>
+<div class="inner-content-area content">
+	<img src="assets/maerkte.jpeg" width="100%" class="mb-5" />
+	<div class="search">
+		<feature-suggest-search [design]="suggestSearchDesign"></feature-suggest-search>
+	</div>
+	<div class="row">
+		<div class="col-12 col-xl-6">
+			<ui-instrument-list
+				[listItems]="bestIndices$ | async"
+				[headline]="'market-overview-headline' | translate"
+				[tableType]="tableType"
+			></ui-instrument-list>
+		</div>
+		<div class="col-12 col-xl-6">
+			<ui-instrument-list
+				[listItems]="bestCommodities$ | async"
+				[headline]="'most-important-commodites-headline' | translate"
+				[tableType]="tableType"
+			></ui-instrument-list>
+			<ui-instrument-list
+				[listItems]="bestCurrencies$ | async"
+				[headline]="'most-important-currencies-headline' | translate"
+				[tableType]="tableType"
+				class="table-1"
+			></ui-instrument-list>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12 col-xl-6">
+			<ui-instrument-list
+				[listItems]="bestFunds$ | async"
+				[headline]="'most-important-fund-headline' | translate"
+				[tableType]="tableType"
+			></ui-instrument-list>
+		</div>
+		<div class="col-12 col-xl-6">
+			<ui-instrument-list
+				[listItems]="bestETFs$ | async"
+				[headline]="'most-important-etfs-headline' | translate"
+				[tableType]="tableType"
+			></ui-instrument-list>
+		</div>
+	</div>
+</div>

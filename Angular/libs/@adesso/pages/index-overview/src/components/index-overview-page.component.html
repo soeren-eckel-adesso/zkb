@@ -1,0 +1,15 @@
+<feature-carousel-with-search [slides]="slides"></feature-carousel-with-search>
+
+<div class="inner-content-area">
+  <div class="content-columns">
+    <div class="content-column">
+      <ui-instrument-list  *ngIf="germanIndices" [listItems]="germanIndices | async" [headline]="'german-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+    </div>
+    <div class="content-column">
+      <ui-instrument-list  *ngIf="europeIndices" [listItems]="europeIndices | async" [headline]="'europa-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+    </div>
+    <div class="content-column">
+      <ui-instrument-list  *ngIf="usaAndAsiaIndices" [listItems]="usaAndAsiaIndices | async" [headline]="'usa-and-asia-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+    </div>
+  </div>
+</div>

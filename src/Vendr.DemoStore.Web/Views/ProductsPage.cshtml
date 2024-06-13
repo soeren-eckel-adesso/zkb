@@ -1,8 +1,0 @@
-﻿@using Vendr.DemoStore.Models;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Vendr.DemoStore.Models.ProductsPage>
-@{
-    Layout = "Page.cshtml";
-}
-
-@await Html.PartialAsync("Intro")
-@await Html.PartialAsync("ProductGroupList", Model.Children.OfType<IProductGroupComp>())

@@ -1,0 +1,19 @@
+<div class="news-detail">
+  <span class="news-date">{{news?.date | dateOrTime}}</span>
+  <h1 class="news-headline">{{news?.headline}}</h1>
+
+  <div class="news-body">
+    <p *ngFor="let paragraph of news?.body">
+      <ng-container *ngIf="paragraph.substr(paragraph.length - 1, 1) == ':' && paragraph.length < 50; else normalParagraph">
+        <strong>{{paragraph}}</strong>
+      </ng-container>
+      <ng-template #normalParagraph>
+        {{paragraph}}
+      </ng-template>
+      <br>
+    </p>
+  </div>
+
+</div>
+
+

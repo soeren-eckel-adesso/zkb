@@ -1,0 +1,16 @@
+/**
+ * CONTENTS
+ *
+ * CALCULATION
+ * Rem function.........Calculation function to calculate rem from px
+ */
+
+/*------------------------------------*\
+  #CALCULATION
+\*------------------------------------*/
+/**
+ * rem function
+ */
+@function rem($target, $context: 16) {
+  @return ($target / $context) * 1rem;
+}

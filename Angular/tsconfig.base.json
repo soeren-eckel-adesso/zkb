@@ -1,0 +1,497 @@
+{
+  "compileOnSave" : true,
+  "compilerOptions" : {
+	"rootDir" : ".",
+	"baseUrl" : ".",
+	"sourceMap" : true,
+	"declaration" : false,
+	"downlevelIteration" : true,
+	"emitDecoratorMetadata" : true,
+	"experimentalDecorators" : true,
+	"moduleResolution" : "node",
+	"importHelpers" : true,
+	"alwaysStrict" : true,
+	"allowUnreachableCode" : false,
+	"noUnusedLocals" : false,
+	"noUnusedParameters" : true,
+	"strictBindCallApply" : true,
+	"strictFunctionTypes" : true,
+	"strictNullChecks" : true,
+	"types" : [
+	  "jest"
+	],
+	"typeRoots" : [
+	  "node_modules/@types"
+	],
+	"target" : "ES2022",
+	"module" : "es2020",
+	"lib" : [
+	  "es2018",
+	  "dom"
+	],
+	"skipLibCheck" : true,
+	"skipDefaultLibCheck" : true,
+	"paths" : {
+	  "@adesso/feature-carousel-with-search" : [
+		"libs/@adesso/features/carousel-with-search/src/public-api"
+	  ],
+	  "@adesso/feature-constituents" : [
+		"libs/@adesso/features/constituents/src/public-api"
+	  ],
+	  "@adesso/feature-currency-converter" : [
+		"libs/@adesso/features/currency-converter/src/public-api"
+	  ],
+	  "@adesso/feature-header" : [
+		"libs/@adesso/features/header/src/public-api"
+	  ],
+	  "@adesso/feature-instrument-detail-config" : [
+		"libs/@adesso/features/instrument-detail-config/src/public-api"
+	  ],
+	  "@adesso/feature-instrument-detail-header" : [
+		"libs/@adesso/features/instrument-detail-header/src/public-api"
+	  ],
+	  "@adesso/feature-instrument-detail-key-value-list" : [
+		"libs/@adesso/features/instrument-detail-key-value-list/src/public-api"
+	  ],
+	  "@adesso/feature-quote-stream" : [
+		"libs/@adesso/features/quote-stream/src/public-api"
+	  ],
+	  "@adesso/feature-suggest-search" : [
+		"libs/@adesso/features/suggest-search/src/public-api"
+	  ],
+	  "@adesso/feature-template" : [
+		"libs/@adesso/features/template/src/public-api"
+	  ],
+	  "@adesso/page-analyses-detail" : [
+		"libs/@adesso/pages/analyses-detail/src/public-api"
+	  ],
+	  "@adesso/page-commodity-detail" : [
+		"libs/@adesso/pages/commodity-detail/src/public-api"
+	  ],
+	  "@adesso/page-commodity-overview" : [
+		"libs/@adesso/pages/commodity-overview/src/public-api"
+	  ],
+	  "@adesso/page-derivative-detail" : [
+		"libs/@adesso/pages/derivative-detail/src/public-api"
+	  ],
+	  "@adesso/page-derivative-overview" : [
+		"libs/@adesso/pages/derivative-overview/src/public-api"
+	  ],
+	  "@adesso/page-derivative-search" : [
+		"libs/@adesso/pages/derivative-search/src/public-api"
+	  ],
+	  "@adesso/page-etf-detail" : [
+		"libs/@adesso/pages/etf-detail/src/public-api"
+	  ],
+	  "@adesso/page-etf-overview" : [
+		"libs/@adesso/pages/etf-overview/src/public-api"
+	  ],
+	  "@adesso/page-etf-search" : [
+		"libs/@adesso/pages/etf-search/src/public-api"
+	  ],
+	  "@adesso/page-exchange-rate-detail" : [
+		"libs/@adesso/pages/exchange-rate-detail/src/public-api"
+	  ],
+	  "@adesso/page-exchange-rate-overview" : [
+		"libs/@adesso/pages/exchange-rate-overview/src/public-api"
+	  ],
+	  "@adesso/page-fund-detail" : [
+		"libs/@adesso/pages/fund-detail/src/public-api"
+	  ],
+	  "@adesso/page-fund-overview" : [
+		"libs/@adesso/pages/fund-overview/src/public-api"
+	  ],
+	  "@adesso/page-fund-search" : [
+		"libs/@adesso/pages/fund-search/src/public-api"
+	  ],
+	  "@adesso/page-home" : [
+		"libs/@adesso/pages/home/src/public-api"
+	  ],
+	  "@adesso/page-index-detail" : [
+		"libs/@adesso/pages/index-detail/src/public-api"
+	  ],
+	  "@adesso/page-index-overview" : [
+		"libs/@adesso/pages/index-overview/src/public-api"
+	  ],
+	  "@adesso/page-index-search" : [
+		"libs/@adesso/pages/index-search/src/public-api"
+	  ],
+	  "@adesso/page-news-detail" : [
+		"libs/@adesso/pages/news-detail/src/public-api"
+	  ],
+	  "@adesso/page-not-found" : [
+		"libs/@adesso/pages/not-found/src/public-api"
+	  ],
+	  "@adesso/page-not-found-redirect" : [
+		"libs/@adesso/pages/not-found-redirect/src/public-api"
+	  ],
+	  "@adesso/page-share-detail" : [
+		"libs/@adesso/pages/share-detail/src/public-api"
+	  ],
+	  "@adesso/page-share-overview" : [
+		"libs/@adesso/pages/share-overview/src/public-api"
+	  ],
+	  "@adesso/page-share-search" : [
+		"libs/@adesso/pages/share-search/src/public-api"
+	  ],
+	  "@adesso/repository-epi-api" : [
+		"libs/@adesso/repositories/epi-api/src/public-api"
+	  ],
+	  "@adesso/repository-favourite" : [
+		"libs/@adesso/repositories/favourite/src/public-api"
+	  ],
+	  "@adesso/service-analyses" : [
+		"libs/@adesso/services/analyses/src/public-api"
+	  ],
+	  "@adesso/service-best-quote" : [
+		"libs/@adesso/services/best-quote/src/public-api"
+	  ],
+	  "@adesso/service-calculation" : [
+		"libs/@adesso/services/calculation/src/public-api"
+	  ],
+	  "@adesso/service-chart" : [
+		"libs/@adesso/services/chart/src/public-api"
+	  ],
+	  "@adesso/service-favourite" : [
+		"libs/@adesso/services/favourite/src/public-api"
+	  ],
+	  "@adesso/service-instrument-detail" : [
+		"libs/@adesso/services/instrument-detail/src/public-api"
+	  ],
+	  "@adesso/service-instrument-list" : [
+		"libs/@adesso/services/instrument-list/src/public-api"
+	  ],
+	  "@adesso/service-news" : [
+		"libs/@adesso/services/news/src/public-api"
+	  ],
+	  "@adesso/service-quote-stream" : [
+		"libs/@adesso/services/quote-stream/src/public-api"
+	  ],
+	  "@adesso/service-suggest-search" : [
+		"libs/@adesso/services/suggest-search/src/public-api"
+	  ],
+	  "@adesso/ui-analyses-detail" : [
+		"libs/@adesso/uis/analyses-detail/src/public-api"
+	  ],
+	  "@adesso/ui-analyses-list" : [
+		"libs/@adesso/uis/analyses-list/src/public-api"
+	  ],
+	  "@adesso/ui-bread-crumb" : [
+		"libs/@adesso/uis/bread-crumb/src/public-api"
+	  ],
+	  "@adesso/ui-chart" : [
+		"libs/@adesso/uis/chart/src/public-api"
+	  ],
+	  "@adesso/ui-chart-quote-box" : [
+		"libs/@adesso/uis/chart-quote-box/src/public-api"
+	  ],
+	  "@adesso/ui-chart-teaser" : [
+		"libs/@adesso/uis/chart-teaser/src/public-api"
+	  ],
+	  "@adesso/ui-composition" : [
+		"libs/@adesso/uis/composition/src/public-api"
+	  ],
+	  "@adesso/ui-content-box" : [
+		"libs/@adesso/uis/content-box/src/public-api"
+	  ],
+	  "@adesso/ui-context-menu-list" : [
+		"libs/@adesso/uis/context-menu-list/src/public-api"
+	  ],
+	  "@adesso/ui-datepicker" : [
+		"libs/@adesso/uis/datepicker/src/public-api"
+	  ],
+	  "@adesso/ui-form-button" : [
+		"libs/@adesso/uis/form-button/src/public-api"
+	  ],
+	  "@adesso/ui-form-datepicker" : [
+		"libs/@adesso/uis/form-datepicker/src/public-api"
+	  ],
+	  "@adesso/ui-form-input" : [
+		"libs/@adesso/uis/form-input/src/public-api"
+	  ],
+	  "@adesso/ui-formular" : [
+		"libs/@adesso/uis/formular/src/public-api"
+	  ],
+	  "@adesso/ui-highcharts" : [
+		"libs/@adesso/uis/highcharts/src/public-api"
+	  ],
+	  "@adesso/ui-image-carousel" : [
+		"libs/@adesso/uis/image-carousel/src/public-api"
+	  ],
+	  "@adesso/ui-instrument-header" : [
+		"libs/@adesso/uis/instrument-header/src/public-api"
+	  ],
+	  "@adesso/ui-instrument-list" : [
+		"libs/@adesso/uis/instrument-list/src/public-api"
+	  ],
+	  "@adesso/ui-key-value-list" : [
+		"libs/@adesso/uis/key-value-list/src/public-api"
+	  ],
+	  "@adesso/ui-login" : [
+		"libs/@adesso/uis/login/src/public-api"
+	  ],
+	  "@adesso/ui-material" : [
+		"libs/@adesso/uis/material/src/public-api"
+	  ],
+	  "@adesso/ui-news-detail" : [
+		"libs/@adesso/uis/news-detail/src/public-api"
+	  ],
+	  "@adesso/ui-news-list" : [
+		"libs/@adesso/uis/news-list/src/public-api"
+	  ],
+	  "@adesso/ui-paging" : [
+		"libs/@adesso/uis/paging/src/public-api"
+	  ],
+	  "@adesso/ui-svg-chart" : [
+		"libs/@adesso/uis/svg-chart/src/public-api"
+	  ],
+	  "@adesso/util-authentication-http-interceptor" : [
+		"libs/@adesso/utils/authentication-http-interceptor/src/public-api"
+	  ],
+	  "@adesso/util-contracts" : [
+		"libs/@adesso/utils/contracts/src/public-api"
+	  ],
+	  "@adesso/util-environment" : [
+		"libs/@adesso/utils/environment/src/public-api"
+	  ],
+	  "@afp-demo/page-login" : [
+		"libs/@afp-demo/pages/login/src/public-api"
+	  ],
+	  "@base/util-form" : [
+		"libs/@base/utils/form/src/public-api"
+	  ],
+	  "@base/util-format" : [
+		"libs/@base/utils/format/src/public-api"
+	  ],
+	  "@base/util-logger" : [
+		"libs/@base/utils/logger/src/public-api"
+	  ],
+	  "@base/util-ng-let" : [
+		"libs/@base/utils/ng-let/src/public-api"
+	  ],
+	  "@base/util-string" : [
+		"libs/@base/utils/string/src/public-api"
+	  ],
+	  "@base/util-translation-manager" : [
+		"libs/@base/utils/translation-manager/src/public-api"
+	  ],
+	  "@ing/feature-instrument-search" : [
+		"libs/@ing/features/instrument-search/src/public-api"
+	  ],
+	  "@ing/feature-suggest-search" : [
+		"libs/@ing/features/suggest-search/src/public-api"
+	  ],
+	  "@ing/feature-template" : [
+		"libs/@ing/features/template/src/public-api"
+	  ],
+	  "@ing/page-fund-search" : [
+		"libs/@ing/pages/fund-search/src/public-api"
+	  ],
+	  "@ing/page-home" : [
+		"libs/@ing/pages/home/src/public-api"
+	  ],
+	  "@ing/repository-component-search" : [
+		"libs/@ing/repositories/component-search/src/public-api"
+	  ],
+	  "@ing/service-description" : [
+		"libs/@ing/services/description/src/public-api"
+	  ],
+	  "@ing/service-instrument-search" : [
+		"libs/@ing/services/instrument-search/src/public-api"
+	  ],
+	  "@ing/ui-description-box" : [
+		"libs/@ing/uis/description-box/src/public-api"
+	  ],
+	  "@ing/ui-form-input" : [
+		"libs/@ing/uis/form-input/src/public-api"
+	  ],
+	  "@ing/ui-search-result-block" : [
+		"libs/@ing/uis/search-result-block/src/public-api"
+	  ],
+	  "@ing/util-contracts" : [
+		"libs/@ing/utils/contracts/src/public-api"
+	  ],
+	  "@recupera-direct/feature-favourite" : [
+		"libs/@recupera-direct/features/favourite/src/public-api"
+	  ],
+	  "@recupera-direct/feature-template" : [
+		"libs/@recupera-direct/features/template/src/public-api"
+	  ],
+	  "@recupera-direct/page-buy-instrument" : [
+		"libs/@recupera-direct/pages/buy-instrument/src/public-api"
+	  ],
+	  "@recupera-direct/page-home" : [
+		"libs/@recupera-direct/pages/home/src/public-api"
+	  ],
+	  "@recupera-direct/page-login" : [
+		"libs/@recupera-direct/pages/login/src/public-api"
+	  ],
+	  "@recupera-direct/page-portfolio" : [
+		"libs/@recupera-direct/pages/portfolio/src/public-api"
+	  ],
+	  "@recupera-direct/page-sell-instrument" : [
+		"libs/@recupera-direct/pages/sell-instrument/src/public-api"
+	  ],
+	  "@recupera-direct/repository-portfolio" : [
+		"libs/@recupera-direct/repositories/portfolio/src/public-api"
+	  ],
+	  "@recupera-direct/service-authentication" : [
+		"libs/@recupera-direct/services/authentication/src/public-api"
+	  ],
+	  "@recupera-direct/service-portfolio" : [
+		"libs/@recupera-direct/services/portfolio/src/public-api"
+	  ],
+	  "@storybook" : [
+		"./storybook"
+	  ],
+	  "@stroeer/repository-analyses" : [
+		"libs/@stroeer/repositories/analyses/src/public-api"
+	  ],
+	  "@stroeer/repository-chart" : [
+		"libs/@stroeer/repositories/chart/src/public-api"
+	  ],
+	  "@stroeer/repository-currency-converter" : [
+		"libs/@stroeer/repositories/currency-converter/src/public-api"
+	  ],
+	  "@stroeer/repository-instrument-detail" : [
+		"libs/@stroeer/repositories/instrument-detail/src/public-api"
+	  ],
+	  "@stroeer/repository-instrument-list" : [
+		"libs/@stroeer/repositories/instrument-list/src/public-api"
+	  ],
+	  "@stroeer/repository-news" : [
+		"libs/@stroeer/repositories/news/src/public-api"
+	  ],
+	  "@stroeer/repository-quotes" : [
+		"libs/@stroeer/repositories/quotes/src/public-api"
+	  ],
+	  "@stroeer/repository-suggest-search" : [
+		"libs/@stroeer/repositories/suggest-search/src/public-api"
+	  ],
+	  "@stroeer/util-stroeer-http-interceptor" : [
+		"libs/@stroeer/utils/stroeer-http-interceptor/src/public-api"
+	  ],
+	  "@training/page-change-detection-default" : [
+		"libs/@training/pages/change-detection-default/src/public-api"
+	  ],
+	  "@training/page-change-detection-on-push" : [
+		"libs/@training/pages/change-detection-on-push/src/public-api"
+	  ],
+	  "@training/page-css-default" : [
+		"libs/@training/pages/css-default/src/public-api"
+	  ],
+	  "@training/page-documentation" : [
+		"libs/@training/pages/documentation/src/public-api"
+	  ],
+	  "@training/page-home" : [
+		"libs/@training/pages/home/src/public-api"
+	  ],
+	  "@training/page-rxjs" : [
+		"libs/@training/pages/rxjs/src/public-api"
+	  ],
+	  "@training/ui-css-example" : [
+		"libs/@training/uis/css-example/src/public-api"
+	  ],
+	  "@training/ui-update-blink" : [
+		"libs/@training/uis/update-blink/src/public-api"
+	  ],
+	  "@training/ui-update-blink-on-push" : [
+		"libs/@training/uis/update-blink-on-push/src/public-api"
+	  ],
+	  "@training/util-contracts" : [
+		"libs/@training/utils/contracts/src/public-api"
+	  ],
+	  "@volksbank/feature-template" : [
+		"libs/@volksbank/features/template/src/public-api"
+	  ],
+	  "@volksbank/page-addresses" : [
+		"libs/@volksbank/pages/addresses/src/public-api"
+	  ],
+	  "@volksbank/page-admin-dashboard" : [
+		"libs/@volksbank/pages/admin-dashboard/src/public-api"
+	  ],
+	  "@volksbank/page-admins" : [
+		"libs/@volksbank/pages/admins/src/public-api"
+	  ],
+	  "@volksbank/page-bank-accounts" : [
+		"libs/@volksbank/pages/bank-accounts/src/public-api"
+	  ],
+	  "@volksbank/page-contact" : [
+		"libs/@volksbank/pages/contact/src/public-api"
+	  ],
+	  "@volksbank/page-contracts" : [
+		"libs/@volksbank/pages/contracts/src/public-api"
+	  ],
+	  "@volksbank/page-dashboard" : [
+		"libs/@volksbank/pages/dashboard/src/public-api"
+	  ],
+	  "@volksbank/page-ecomm-access" : [
+		"libs/@volksbank/pages/ecomm-access/src/public-api"
+	  ],
+	  "@volksbank/page-hp-user" : [
+		"libs/@volksbank/pages/hp-user/src/public-api"
+	  ],
+	  "@volksbank/page-login" : [
+		"libs/@volksbank/pages/login/src/public-api"
+	  ],
+	  "@volksbank/page-my-documents" : [
+		"libs/@volksbank/pages/my-documents/src/public-api"
+	  ],
+	  "@volksbank/page-report" : [
+		"libs/@volksbank/pages/report/src/public-api"
+	  ],
+	  "@volksbank/page-settings" : [
+		"libs/@volksbank/pages/settings/src/public-api"
+	  ],
+	  "@volksbank/page-system-logs" : [
+		"libs/@volksbank/pages/system-logs/src/public-api"
+	  ],
+	  "@volksbank/service-authentication" : [
+		"libs/@volksbank/services/authentication/src/public-api"
+	  ],
+	  "@volksbank/service-vr-data" : [
+		"libs/@volksbank/services/vr-data/src/public-api"
+	  ],
+	  "@volksbank/ui-addresses" : [
+		"libs/@volksbank/uis/addresses/src/public-api"
+	  ],
+	  "@volksbank/ui-bank" : [
+		"libs/@volksbank/uis/bank/src/public-api"
+	  ],
+	  "@volksbank/ui-contract" : [
+		"libs/@volksbank/uis/contract/src/public-api"
+	  ],
+	  "@volksbank/ui-data-filter" : [
+		"libs/@volksbank/uis/data-filter/src/public-api"
+	  ],
+	  "@volksbank/ui-document-list" : [
+		"libs/@volksbank/uis/document-list/src/public-api"
+	  ],
+	  "@volksbank/ui-ecomm" : [
+		"libs/@volksbank/uis/ecomm/src/public-api"
+	  ],
+	  "@volksbank/ui-systemlog-table" : [
+		"libs/@volksbank/uis/systemlog-table/src/public-api"
+	  ],
+	  "@volksbank/ui-user-table" : [
+		"libs/@volksbank/uis/user-table/src/public-api"
+	  ],
+	  "@volksbank/ui-vr-content-box" : [
+		"libs/@volksbank/uis/vr-content-box/src/public-api"
+	  ]
+	},
+	"esModuleInterop" : true,
+	"allowSyntheticDefaultImports" : true
+  },
+  "exclude" : [
+	"node_modules",
+	".schematics"
+  ],
+  "angularCompilerOptions" : {
+	"fullTemplateTypeCheck" : true,
+	"enableI18nLegacyMessageIdFormat" : false,
+	"strictInjectionParameters" : true,
+	"strictInputAccessModifiers" : true,
+	"strictTemplates" : true
+  }
+}

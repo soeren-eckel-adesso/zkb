@@ -1,0 +1,36 @@
+<div class="main-content-background">
+  <div class="inner-content-area">
+    <ng-container *ngIf="pageConfig$ | async as pageConfig">
+      <feature-instrument-detail-header [breadCrumbItems]="pageConfig.breadCrumbItems" [chartQuoteBoxValues]="pageConfig.chartQuoteBoxValues" [instrumentHeader]="pageConfig.instrumentHeader"></feature-instrument-detail-header>
+
+      <div class="content-columns">
+        <div class="content-column">
+
+          <ui-composition [compositions]="pageConfig.shareholderCompositions" [headline]="'composition-shareholder-headline' | translate"></ui-composition>
+
+        </div>
+        <div class="content-column column-composition-height">
+
+          <ui-content-box [headline]="'base-data-headline' | translate">
+            <ui-key-value-list [items]="pageConfig.baseData"></ui-key-value-list>
+          </ui-content-box>
+          <ui-content-box [headline]="'company-description-headline' | translate" *ngIf="pageConfig.companyDescription">{{pageConfig.companyDescription}}</ui-content-box>
+
+        </div>
+      </div>
+
+      <div class="content-columns">
+        <div class="content-column">
+
+          <ui-news-list *ngIf="pageConfig.news$ | async as news" [headline]="'news-headline' | translate" [items]="news"></ui-news-list>
+
+        </div>
+        <div class="content-column column-composition-height">
+
+          <ui-analyses-list *ngIf="pageConfig.analyses$ | async as analyses" [headline]="'analyses-headline' | translate" [items]="analyses"></ui-analyses-list>
+
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

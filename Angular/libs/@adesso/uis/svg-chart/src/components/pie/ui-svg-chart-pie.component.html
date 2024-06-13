@@ -1,0 +1,7 @@
+<svg class="pieChart" viewBox="0 0 190 190" xmlns="http://www.w3.org/2000/svg" *ngIf="values">
+  <circle cx="95" cy="95" r="88" class="bg c10"></circle>
+  <ng-container *ngFor="let value of values; index as i; last as isLast">
+    <path [attr.d]="describeArc(joinValues( values.length - i), joinValues( values.length - i + 1))" [attr.stroke]="getColor(values.length - i).from" (mouseover)="hover(values.length - i)" />
+  </ng-container>
+  <path [attr.d]="describeArc(joinValues( 0), joinValues( 1))" [attr.stroke]="getColor(0).from" (mouseover)="hover(0)" />
+</svg>

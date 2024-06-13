@@ -1,0 +1,156 @@
+<div *ngIf="quoteBoxValues$ | async as quoteBoxValues">
+	<div class="chart-area" [ngClass]="{ 'd-none': !isChart }">
+		<h2>Wertentwicklung</h2>
+		<ul class="nav nav-pills mb-4 flex-nowrap hide-scrollbar overflow-auto" *ngIf="chartPayload">
+			<li class="nav-item show">
+				<a
+					class="nav-link text-nowrap"
+					href="javascript:void(0)"
+					[ngClass]="{ active: chartPayload.period === 'OneMonth' }"
+					(click)="changePeriod('OneMonth')"
+					>1 {{ "month-word" | translate }}</a
+				>
+			</li>
+			<li class="nav-item show">
+				<a
+					class="nav-link text-nowrap"
+					href="javascript:void(0)"
+					[ngClass]="{ active: chartPayload.period === 'ThreeMonths' }"
+					(click)="changePeriod('ThreeMonths')"
+					>3 {{ "months-word" | translate }}</a
+				>
+			</li>
+			<li class="nav-item show">
+				<a
+					class="nav-link text-nowrap"
+					href="javascript:void(0)"
+					[ngClass]="{ active: chartPayload.period === 'SixMonths' }"
+					(click)="changePeriod('SixMonths')"
+					>6 {{ "months-word" | translate }}</a
+				>
+			</li>
+			<li class="nav-item show">
+				<a
+					class="nav-link text-nowrap"
+					href="javascript:void(0)"
+					[ngClass]="{ active: chartPayload.period === 'OneYear' }"
+					(click)="changePeriod('OneYear')"
+					>1 {{ "year-word" | translate }}</a
+				>
+			</li>
+			<li class="nav-item show">
+				<a
+					class="nav-link text-nowrap"
+					href="javascript:void(0)"
+					[ngClass]="{ active: chartPayload.period === 'ThreeYears' }"
+					(click)="changePeriod('ThreeYears')"
+					>3 {{ "years-word" | translate }}</a
+				>
+			</li>
+			<li class="nav-item show">
+				<a
+					class="nav-link text-nowrap"
+					href="javascript:void(0)"
+					[ngClass]="{ active: chartPayload.period === 'FiveYears' }"
+					(click)="changePeriod('FiveYears')"
+				>
+					5 {{ "years-word" | translate }}
+				</a>
+			</li>
+		</ul>
+
+		<ui-chart-line
+			[name]="this.quoteBoxValues?.name"
+			[underlyingChartData]="this.underlyingChartData$ | async"
+			[chartData]="this.chartData$ | async"
+			[instrument]="this.instrument"
+		></ui-chart-line>
+	</div>
+	<div class="row no-gutters" [ngClass]="{ 'd-none': isChart }">
+		<div class="col-6 pt-3 pr-1-5" *ngIf="tradingVersion">
+			<a class="border border-2 d-block link-white" [href]="sellInstrument(quoteBoxValues.currency)" *ngIf="!knockout">
+				<div class="text-center pt-1-5 fs-1">{{ "bid-button" | translate }}</div>
+				<div class="text-center">
+					<quote-stream
+						class="font-weight-bold"
+						[options]="{
+							valor: quoteBoxValues.chartPayload?.valor,
+							pushField: pf.bid,
+							suffix: '',
+							value: quoteBoxValues.bid,
+							assetClass: quoteBoxValues.assetClass
+						}"
+					></quote-stream>
+				</div>
+				<div class="text-center pb-1-5 fs-1">
+					<quote-stream
+						[options]="{
+							valor: quoteBoxValues.chartPayload?.valor,
+							pushField: pf.bidSize,
+							suffix: 'Stk.',
+							value: quoteBoxValues.bidSize,
+							decimals: 0,
+							assetClass: quoteBoxValues.assetClass
+						}"
+					></quote-stream>
+				</div>
+			</a>
+			<div class="border border-2 d-block text-grey border-grey" *ngIf="knockout">
+				<div class="text-center pt-1-5 fs-1">{{ "bid-button" | translate }}</div>
+				<div class="text-center">ausgeknockt</div>
+				<div class="text-center pb-1-5 fs-1">&#x2012;</div>
+			</div>
+		</div>
+		<div class="col-6 pt-3 pr-1-5" *ngIf="quoteBoxValues && tradingVersion">
+			<a class="border border-2 d-block link-white" [href]="buyInstrument(quoteBoxValues.currency)" *ngIf="!knockout">
+				<div class="text-center pt-1-5 fs-1">{{ "ask-button" | translate }}</div>
+				<div class="text-center">
+					<quote-stream
+						class="font-weight-bold"
+						[options]="{
+							valor: quoteBoxValues.chartPayload?.valor,
+							pushField: pf.ask,
+							suffix: '',
+							value: quoteBoxValues.ask,
+							assetClass: quoteBoxValues.assetClass
+						}"
+					></quote-stream>
+				</div>
+				<div class="text-center pb-1-5 fs-1">
+					<quote-stream
+						[options]="{
+							valor: quoteBoxValues.chartPayload?.valor,
+							pushField: pf.askSize,
+							suffix: 'Stk.',
+							value: quoteBoxValues.askSize,
+							decimals: 0,
+							assetClass: quoteBoxValues.assetClass
+						}"
+					></quote-stream>
+				</div>
+			</a>
+			<div class="border border-2 d-block text-grey border-grey" *ngIf="knockout">
+				<div class="text-center pt-1-5 fs-1">{{ "ask-button" | translate }}</div>
+				<div class="text-center">ausgeknockt</div>
+				<div class="text-center pb-1-5 fs-1">&#x2012;</div>
+			</div>
+		</div>
+
+		<div class="col-12 text-center py-3" *ngIf="instrument?.derivativeData">
+			<span *ngIf="!knockout">
+				<i class="bi bi-caret-up-fill" *ngIf="instrument.derivativeData.figures.changePercent >= 0"></i>
+				<i class="bi bi-caret-down-fill" *ngIf="instrument.derivativeData.figures.changePercent < 0"></i>
+				{{
+					((quoteBoxValues?.ask ?? 0) - (quoteBoxValues?.ask ?? 0) * (instrument.derivativeData.figures.changePercent / 100 + 1)) * -1
+						| number : ".2-2"
+				}}
+				{{ quoteBoxValues.currency }}
+				({{ instrument.derivativeData.figures.changePercent / 100 | percent : ".2" }}) <i class="bi bi-dash"></i> Stand:
+				{{ currentDate | date : "shortTime" }}
+			</span>
+			<span *ngIf="knockout"> &#x2012; </span>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+{{ logger.uiUpdate("ChartQuoteBoxUiComponent") }}

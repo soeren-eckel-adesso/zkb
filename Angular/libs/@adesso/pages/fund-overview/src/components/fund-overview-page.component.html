@@ -1,0 +1,18 @@
+<feature-carousel-with-search [slides]="slides"></feature-carousel-with-search>
+
+<div class="inner-content-area">
+  <div class="content-columns">
+    <div class="content-column">
+      <ui-instrument-list [listItems]="commodityFunds$ | async" [headline]="'commodity-fund-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+      <ui-instrument-list [listItems]="mixedFunds$ | async" [headline]="'mixed-fund-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+      <ui-instrument-list [listItems]="moneyMarketFunds$ | async" [headline]="'money-market-fund-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+      <ui-instrument-list [listItems]="umbrellaFunds$ | async" [headline]="'umbrella-fund-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+    </div>
+    <div class="content-column">
+      <ui-instrument-list [listItems]="equityFunds$ | async" [headline]="'equity-fund-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+      <ui-instrument-list [listItems]="pensionFunds$ | async" [headline]="'pension-fund-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+      <ui-instrument-list [listItems]="realEstateFunds$ | async" [headline]="'real-estate-fund-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+      <ui-instrument-list [listItems]="miscellaneousFunds$ | async" [headline]="'miscellaneous-fund-headline' | translate" [tableType]="tableType"></ui-instrument-list>
+    </div>
+  </div>
+</div>

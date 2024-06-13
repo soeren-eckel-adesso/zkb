@@ -1,0 +1,85 @@
+﻿@inherits UmbracoViewPage
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <base href="/produkte/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zürcher Kantonalbank - @Umbraco.AssignedContentItem.Name</title>
+    <meta name="theme-color" content="#1976d2">
+    <meta name="theme-color" content="#1976d2">
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <link rel="apple-touch-icon" href="/produkte/assets/app-icons/58.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/produkte/assets/app-icons/152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/produkte/assets/app-icons/180.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/produkte/assets/app-icons/167.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/produkte/assets/app-icons/16.png">
+    <link rel="icon" type="image/png" sizes="20x20" href="/produkte/assets/app-icons/20.png">
+    <link rel="icon" type="image/png" sizes="29x29" href="/produkte/assets/app-icons/29.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/produkte/assets/app-icons/32.png">
+    <link rel="icon" type="image/png" sizes="40x40" href="/produkte/assets/app-icons/40.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/produkte/assets/app-icons/48.png">
+    <link rel="icon" type="image/png" sizes="50x50" href="/produkte/assets/app-icons/50.png">
+    <link rel="icon" type="image/png" sizes="55x55" href="/produkte/assets/app-icons/55.png">
+    <link rel="icon" type="image/png" sizes="57x57" href="/produkte/assets/app-icons/57.png">
+    <link rel="icon" type="image/png" sizes="58x58" href="/produkte/assets/app-icons/58.png">
+    <link rel="icon" type="image/png" sizes="60x60" href="/produkte/assets/app-icons/60.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/produkte/assets/app-icons/64.png">
+    <link rel="icon" type="image/png" sizes="72x72" href="/produkte/assets/app-icons/72.png">
+    <link rel="icon" type="image/png" sizes="120x120" href="/produkte/assets/app-icons/120.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="/produkte/assets/app-icons/144.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="/produkte/assets/app-icons/180.png">
+    <link rel="manifest" href="/produkte/manifest.webmanifest">
+    <meta name="theme-color" content="#1976d2">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S617W495Q8"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+   
+     gtag('config', 'G-S617W495Q8');
+   </script>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/fonts/bootstrap-icons.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+
+<div class="container">
+    @await Html.PartialAsync("TopNavigation")
+    @await Html.PartialAsync("MainNavigation")
+
+    <app-root></app-root>
+    @await Html.PartialAsync("Footer")
+</div>
+
+<div id="cookie-popup-overlay"></div>
+<div id="cookie-popup">
+    <div class="row" id="cookie-popup-content">
+        <div class="col-12 col-lg-6 text-center text-lg-left">
+            Wir verwenden Cookies auf unseren Websites, um diese laufend für Sie zu verbessern.
+            Mit dem Klick auf «Allen cookies zustimmen» erklären Sie sich mit der Verwendung von Cookies gemäss unserer Cookie Policy einverstanden.
+            Mit dem Klick auf «Nur erforderliche» werden lediglich Cookies gesetzt, die für die Verwendung der Website notwendig sind.
+        </div>
+        <div class="col-12 col-lg-6 text-center text-lg-right align-self-center">
+            <button class="btn btn-outline-primary mr-3" onclick="acceptCookies()">Nur erforderliche</button>
+            <button class="btn btn-primary" onclick="acceptCookies()">Allen Cookies zustimmen</button>
+        </div>
+
+    </div>
+
+</div>
+</body>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/produkte/runtime.js" type="module">
+</script><script src="/produkte/polyfills.js" type="module">
+</script><script src="/produkte/vendor.js" type="module">
+</script><script src="/produkte/main.js" type="module"></script>
+<script src="/js/cookies.js"></script>
+</html>

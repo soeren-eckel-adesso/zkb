@@ -1,0 +1,24 @@
+<div class="adesso-key-value-list-component" [ngClass]="{'list-design': design == designs.list, 'chart-box-design': design == designs.chartBox}">
+  <ng-container *ngIf="items != null && items.length > 0; else elseBlock">
+
+    <table cellspacing="0" cellpadding="0">
+      <ng-container *ngFor="let item of items">
+        <tr *ngIf="item.value.hasValue">
+          <td class="column-key">{{item.name}}</td>
+          <td class="column-value">
+            <ng-container *ngIf="item.value.type === valueType.valueFormatterItem">
+              {{item.value | ValueFormatter}}
+            </ng-container>
+            <ng-container *ngIf="item.value.type === valueType.starFormatterItem">
+              <ui-star-rating [rating]="item.value.value" [maxStars]="item.value.maxStars"></ui-star-rating>
+            </ng-container>
+          </td>
+        </tr>
+      </ng-container>
+    </table>
+
+  </ng-container>
+  <ng-template #elseBlock>
+
+  </ng-template>
+</div>

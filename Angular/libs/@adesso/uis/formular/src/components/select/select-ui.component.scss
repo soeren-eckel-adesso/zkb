@@ -1,0 +1,13 @@
+@import "../../styles/styles";
+
+.one-item-text {
+  font-size: 14px;
+  display: inline-block;
+  padding: 5px 10px;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}

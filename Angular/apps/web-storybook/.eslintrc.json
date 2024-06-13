@@ -1,0 +1,4 @@
+{
+  "extends": ["../../.eslint/.eslintrc-web.json"],
+  "ignorePatterns": ["!**/*", "**/server.ts", "**/main.ts", "**/main.server.ts"]
+}

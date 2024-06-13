@@ -1,0 +1,77 @@
+@import "../../../../../../styles/variables";
+@import "../../../../../../styles/fonts";
+@import "../../../../../../styles/default";
+
+.analyses-list {
+  @include font-default;
+}
+
+.analyses-item {
+  background-color: #FFFFFF;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: block;
+  text-decoration: none;
+}
+.analyses-item:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.analyses-headline {
+  color: $color-default;
+  display: block;
+
+  @include font-bold;
+}
+
+.analyses-date {
+  color: $color-default;
+  font-size: $font-size-very-small;
+}
+
+.analyses-recommendation {
+  display: inline-block;
+  padding: 5px;
+  margin-top: 5px;
+  color: $color-default;
+  @include font-bold;
+  border-radius: 4px;
+  width: 80px;
+  font-size: $font-size-very-small;
+  text-align: center;
+}
+.recommendation-buy {
+  background-color: $color-positive;
+  color: #FFFFFF;
+  border: 1px solid $color-limiter;
+}
+
+.recommendation-hold,
+.recommendation-none,
+.recommendation-unknown {
+  background-color: $color-neutral;
+  border: 1px solid $color-limiter;
+}
+
+.recommendation-sell {
+  background-color: $color-negative;
+  color: #FFFFFF;
+  border: 1px solid $color-limiter;
+}
+
+.analyses-target {
+  display: inline-block;
+  padding: 5px;
+  margin-top: 5px;
+  color: $color-default;
+  border-radius: 4px;
+  width: 300px;
+  margin-left: 5px;
+  border: 1px solid $color-limiter;
+  font-size: $font-size-very-small;
+  label {
+    @include font-bold;
+  }
+}

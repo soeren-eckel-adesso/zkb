@@ -1,0 +1,46 @@
+<table class="ui-instrument-list table-desktop">
+  <tbody>
+  <tr>
+    <th colspan="2"><span class="main-value">{{'ui-instrument-list-header-name' | translate}}</span></th>
+    <th><span class="main-value">{{'ui-instrument-list-header-bid' | translate}}</span></th>
+    <th><span class="main-value">{{'ui-instrument-list-header-ask' | translate}}</span></th>
+    <th><span class="main-value">{{'ui-instrument-list-header-orders' | translate}}</span></th>
+    <th><span class="main-value">{{'ui-instrument-list-header-chart' | translate}}</span></th>
+    <th><span class="main-value">{{'ui-instrument-list-header-changePercent' | translate}}</span></th>
+  </tr>
+  <tr *ngFor="let instrument of listItems; index as Index" >
+    <td colspan="2"><a class="main-value dottedText" [routerLink]="[instrument.assetClass + '-detail-page' | translate : {instrumentId: instrument.valor}]">{{instrument.name}}</a></td>
+    <td>
+      <span class="main-value">
+        <quote-stream [options]="{valor: instrument.valor, pushField: pf.bid, isin: instrument.isin, value: instrument.bid, assetClass: instrument.assetClass, suffix: instrument.currencyCode}"></quote-stream>
+      </span>
+    </td>
+    <td>
+      <span class="main-value">
+        <quote-stream [options]="{valor: instrument.valor, pushField: pf.ask, isin: instrument.isin, value: instrument.ask, assetClass: instrument.assetClass, suffix: instrument.currencyCode, close: instrument.askClose}"></quote-stream>
+      </span></td>
+    <td><span class="main-value">{{instrument.orders | numberFormatter }}</span></td>
+    <td><img src="./assets/charts/{{instrument.changePercent !== undefined && instrument.changePercent >= 0 ? 'positive' : 'negative'}}-{{Index%4}}.png"></td>
+    <td>
+      <span class="main-value">
+        <quote-stream [options]="{valor: instrument.valor, pushField: pf.bidChangeRelative, isin: instrument.isin, value: instrument.changePercent, assetClass: instrument.assetClass, close: instrument.bidClose}"></quote-stream>
+      </span></td>
+  </tr>
+  </tbody>
+</table>
+
+<table class="ui-instrument-list table-mobile">
+  <tbody>
+  <tr>
+    <th><span class="main-value">{{'ui-instrument-list-header-name' | translate}}</span><span class="main-value">{{'ui-instrument-list-header-orders' | translate}}</span></th>
+    <th><span class="main-value">{{'ui-instrument-list-header-bid' | translate}}</span><span class="main-value">{{'ui-instrument-list-header-ask' | translate}}</span></th>
+    <th><span class="main-value">{{'ui-instrument-list-header-changePercent' | translate}}</span><span class="main-value">Chart</span></th>
+  </tr>
+  <tr *ngFor="let instrument of listItems; index as Index" >
+    <td><a class="main-value dottedText" [routerLink]="[instrument.assetClass + '-detail-page' | translate : {instrumentId: instrument.valor}]">{{instrument.name}}</a><span class="main-value">{{instrument.orders | numberFormatter }}</span></td>
+    <td><span class="main-value"><quote-stream [options]="{valor: instrument.valor, pushField: pf.bid, isin: instrument.isin, value: instrument.bid, assetClass: instrument.assetClass, suffix: instrument.currencyCode, close: instrument.bidClose}"></quote-stream></span><span class="main-value"><quote-stream [options]="{valor: instrument.valor, pushField: pf.ask, isin: instrument.isin, value: instrument.ask, assetClass: instrument.assetClass, suffix: instrument.currencyCode, close: instrument.askClose}"></quote-stream></span></td>
+    <td><span class="main-value" [ngClass]="{'positive-value': instrument.changePercent !== undefined && instrument.changePercent >= 0, 'negative-value': instrument.changePercent !== undefined && instrument.changePercent < 0}"><quote-stream [options]="{valor: instrument.valor, pushField: pf.bidChangeRelative, isin: instrument.isin, value: instrument.changePercent, assetClass: instrument.assetClass, close: instrument.bidClose}"></quote-stream></span><img src="./assets/charts/{{instrument.changePercent !== undefined && instrument.changePercent >= 0 ? 'positive' : 'negative'}}-{{Index%4}}.png"></td>
+  </tr>
+  </tbody>
+</table>
+{{logger.uiUpdate("OrderTableUiComponent")}}

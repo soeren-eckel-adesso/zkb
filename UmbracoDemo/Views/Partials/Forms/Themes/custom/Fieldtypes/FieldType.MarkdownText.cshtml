@@ -1,0 +1,30 @@
+﻿@using Umbraco.Cms.Web.Common
+@using Umbraco.Forms.Web
+@using UmbracoDemo.Composers.FieldTypes
+@using UmbracoDemo.Enumerations
+@using Markdown = Markdig.Markdown
+@model Umbraco.Forms.Web.Models.FieldViewModel
+@inject UmbracoHelper umbracoHelper
+
+@{
+    var alert = Model.AdditionalSettings[nameof(MarkDownText.DisplayTextInAlertBox)];
+}
+
+<div id="@Model.Id" data-umb="@Model.Id" class="@Html.GetFormFieldClass(Model.FieldTypeName)@(string.IsNullOrEmpty(alert) ? "text-primary" : "d-flex align-items-center alert alert-" + alert.ToLower())">
+    @switch (alert)
+    {
+        case nameof(Alerts.Danger):
+        case nameof(Alerts.Warning):
+            <i class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
+            break;
+        case nameof(Alerts.Info):
+            <i class="bi bi-info-circle-fill flex-shrink-0 me-2"></i>
+            break;
+        case nameof(Alerts.Success):
+            <i class="bi bi-check-circle-fill flex-shrink-0 me-2"></i>
+            break;
+    }
+    <div>
+        @Html.Raw(Markdown.ToHtml(umbracoHelper.GetDictionaryValue(Model.Alias) ?? string.Empty))
+    </div>
+</div>

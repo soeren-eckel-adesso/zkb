@@ -1,0 +1,22 @@
+@import "../../../../../../styles/variables.scss";
+@import "../../../../../../styles/fonts.scss";
+
+.ui-breadcrumb {
+  @include font-default;
+  line-height: 40px;
+  font-size: 14px;
+  a, span {
+    text-decoration: none;
+    color: $color-content;
+  }
+}
+
+@media #{$onDesktop} {
+  .ui-breadcrumb {
+    padding-top: 20px;
+  }
+}
+.breadcrumb-limiter {
+  display: inline-block;
+  padding: 0 10px;
+}

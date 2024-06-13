@@ -1,0 +1,9 @@
+<ng-container *ngIf="slides">
+  <div class="inner-content-area no-mobile-distance carousel-search">
+    <ui-image-carousel [slides]="slides"></ui-image-carousel>
+    <div class="search">
+      <feature-suggest-search [design]="suggestSearchDesign"></feature-suggest-search>
+    </div>
+  </div>
+  <div class="clear"></div>
+</ng-container>

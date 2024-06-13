@@ -1,0 +1,17 @@
+<div class="paging" *ngIf="pageCountValue > 1 && currentPage">
+  <span *ngIf="currentPage != 1" class="paging-item paging-item-move" (click)="switchPage(currentPage - 1)"><</span>
+  <span *ngIf="currentPage == 1" class="paging-item paging-item-move-placeholder"></span>
+  <ng-container *ngIf="showFirstPage">
+    <span class="paging-item" (click)="switchPage(1)">1</span>
+    ...
+  </ng-container>
+  <ng-container *ngFor="let page of pages">
+    <span class="paging-item" [ngClass]="{'paging-item-active': page === currentPage}" (click)="switchPage(page)">{{page}}</span>
+  </ng-container>
+  <ng-container *ngIf="showLastPage">
+    ...
+    <span class="paging-item" (click)="switchPage(pageCountValue)">{{pageCountValue}}</span>
+  </ng-container>
+  <span *ngIf="currentPage != pageCountValue" class="paging-item paging-item-move" (click)="switchPage(currentPage + 1)">></span>
+  <span *ngIf="currentPage == pageCountValue" class="paging-item paging-item-move-placeholder"></span>
+</div>

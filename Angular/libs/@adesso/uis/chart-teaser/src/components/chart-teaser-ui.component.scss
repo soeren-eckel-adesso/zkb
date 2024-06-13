@@ -1,0 +1,27 @@
+@import "../../../../../../styles/variables";
+@import "../../../../../../styles/fonts";
+@import "../../../../../../styles/content-areas";
+
+.chart-teaser {
+  @include font-default;
+  cursor: pointer;
+}
+.main-line {
+  font-weight: bold;
+  font-size: $font-size-content-big;
+}
+
+.sub-line {
+  font-weight: bold;
+  font-size: $font-size-content-small;
+}
+
+.positive-value {
+  color: $color-positive;
+}
+
+.negative-value {
+  color: $color-negative;
+}
+
+

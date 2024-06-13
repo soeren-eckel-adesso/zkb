@@ -1,0 +1,7 @@
+<div class="form-label" *ngIf="label">{{label}}</div>
+<div class="form-frame" *ngIf="items" >
+  <select #sv (change)="inputChanged(sv.value)" *ngIf="items.length > 1">
+    <option *ngFor="let item of items" [value]="item.id" [selected]="(item.id.toString() === selectedId?.toString())">{{item.label}}</option>
+  </select>
+  <span *ngIf="items.length === 1" class="one-item-text">{{items[0].label}}</span>
+</div>

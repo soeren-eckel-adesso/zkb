@@ -1,0 +1,62 @@
+{
+  "npmScope": "adesso-demo-workspace",
+  "defaultProject": "web-storybook",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    ".eslintrc.json": "*",
+    ".eslint/.eslintrc-element.json": "*",
+    ".eslint/.eslintrc-feature.json": "*",
+    ".eslint/.eslintrc-page.json": "*",
+    ".eslint/.eslintrc-repository.json": "*",
+    ".eslint/.eslintrc-service.json": "*",
+    ".eslint/.eslintrc-ui.json": "*",
+    ".eslint/.eslintrc-util.json": "*",
+    ".eslint/.eslintrc-web.json": "*",
+    ".eslint/global-config.js": "*",
+    "styles/variables.scss": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "server",
+          "lint",
+          "test"
+        ]
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "./.schematics/src/collection.json"
+  },
+  "generators": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  }
+}

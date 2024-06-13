@@ -1,0 +1,23 @@
+<ui-content-box *ngIf="data$ | async as data">
+  <div class="chart-teaser" (click)="redirect()" *ngIf="data.valor">
+    <div class="content-columns mobile-flex main-line">
+      <div class="content-column">
+        {{data.name}}
+      </div>
+      <div class="content-column" style="text-align: right;">
+        <quote-stream [options]="{valor: data.valor, pushField: pf.bid, value: data.quote, assetClass: data.assetClass}"></quote-stream>
+      </div>
+    </div>
+
+    <div class="content-columns mobile-flex sub-line" [ngClass]="{'positive-value': isPositive, 'negative-value': !isPositive}">
+      <div class="content-column">
+        <quote-stream [options]="{valor: data.valor, pushField: pf.bidChangeRelative, value: data.changeRelative, close: data.close, decimals: 2, assetClass: data.assetClass}"></quote-stream>
+      </div>
+      <div class="content-column" style="text-align: right;">
+        <quote-stream [options]="{valor: data.valor, pushField: pf.bidChangeAbsolute, value: data.changeAbsolute, close: data.close, assetClass: data.assetClass }"></quote-stream>
+      </div>
+    </div>
+
+    <ui-chart-line *ngIf="data.name" [name]="data.name" [chartData]="data.chartSeriesData" height="160px"></ui-chart-line>
+  </div>
+</ui-content-box>

@@ -1,0 +1,175 @@
+{
+  "projectType": "application",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "root": "apps/app-<%= name %>",
+  "sourceRoot": "apps/app-<%= name %>/src",
+  "prefix": "app",
+  "architect": {
+    "build": {
+      "builder": "@angular-devkit/build-angular:browser",
+      "allowedCommonJsDependencies": [
+        "highcharts",
+        "highcharts/highmaps",
+        "highcharts/highstock"
+      ],
+      "options": {
+        "outputPath": "../Cordova/www",
+        "index": "apps/app-<%= name %>/src/index.html",
+        "main": "apps/app-<%= name %>/src/main.ts",
+        "polyfills": "apps/app-<%= name %>/src/polyfills.ts",
+        "tsConfig": "apps/app-<%= name %>/tsconfig.json",
+        "aot": true,
+        "assets": [
+          "apps/app-<%= name %>/src/favicon.ico",
+          "apps/app-<%= name %>/src/assets",
+          "apps/app-<%= name %>/src/manifest.webmanifest"
+        ],
+        "styles": [
+          "apps/app-<%= name %>/src/styles.scss"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/app-<%= name %>/src/environments/environment.ts",
+              "with": "apps/app-<%= name %>/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": true,
+          "extractLicenses": false,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "60kb",
+              "maximumError": "100kb"
+            }
+          ],
+          "serviceWorker": true,
+          "ngswConfigPath": "apps/app-<%= name %>/ngsw-config.json"
+        },
+        "dev": {
+          "tsConfig": "apps/app-<%= name %>/tsconfig.json",
+          "fileReplacements": [],
+          "optimization": false,
+          "outputHashing": "all",
+          "sourceMap": true,
+          "namedChunks": true,
+          "extractLicenses": false,
+          "vendorChunk": false,
+          "buildOptimizer": false,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "8mb",
+              "maximumError": "15mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "60kb",
+              "maximumError": "100kb"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "builder": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "app-<%= name %>:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "app-<%= name %>:build:production"
+        },
+        "serverless": {
+          "browserTarget": "app-<%= name %>:build:serverless"
+        },
+        "dev": {
+          "browserTarget": "app-<%= name %>:build:dev"
+        }
+      }
+    },
+    "server": {
+      "builder": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/apps/app-<%= name %>/server",
+        "main": "apps/app-<%= name %>/server.ts",
+        "tsConfig": "apps/app-<%= name %>/tsconfig.server.json"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media",
+          "fileReplacements": [
+            {
+              "replace": "apps/app-<%= name %>/src/environments/environment.ts",
+              "with": "apps/app-<%= name %>/src/environments/environment.prod.ts"
+            }
+          ],
+          "sourceMap": false,
+          "optimization": true
+        },
+        "serverless": {
+          "outputHashing": "media",
+          "sourceMap": false,
+          "optimization": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/app-<%= name %>/src/environments/environment.ts",
+              "with": "apps/app-<%= name %>/src/environments/environment.serverless.ts"
+            }
+          ]
+        },
+        "dev": {
+          "tsConfig": "apps/app-<%= name %>/tsconfig.server.json",
+          "outputHashing": "media",
+          "fileReplacements": [],
+          "sourceMap": false,
+          "optimization": true
+        }
+      }
+    },
+    "serve-ssr": {
+      "builder": "@nguniversal/builders:ssr-dev-server",
+      "options": {
+        "browserTarget": "app-<%= name %>:build:dev",
+        "serverTarget": "app-<%= name %>:server:dev"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "app-<%= name %>:build:dev",
+          "serverTarget": "app-<%= name %>:server:dev"
+        },
+        "dev": {
+          "browserTarget": "app-<%= name %>:build:dev",
+          "serverTarget": "app-<%= name %>:server:dev"
+        }
+      }
+    },
+    "lint": {
+      "builder": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/app-<%= name %>/**/*.ts",
+          "apps/app-<%= name %>/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:app"]
+}

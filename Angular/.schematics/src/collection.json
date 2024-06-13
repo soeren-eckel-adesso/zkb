@@ -1,0 +1,52 @@
+{
+  "name": "Nx Angular",
+  "version": "0.1",
+  "extends": ["@schematics/angular", "@nrwl/workspace"],
+  "schematics": {
+    "feature": {
+      "description": "Create Feature Libs",
+      "factory": "./feature/index#createLib",
+      "schema": "./feature/schema.json"
+    },
+    "page": {
+      "description": "Create Page Libs",
+      "factory": "./page/index#createLib",
+      "schema": "./page/schema.json"
+    },
+    "repository": {
+      "description": "Create Repository Libs",
+      "factory": "./repository/index#createLib",
+      "schema": "./repository/schema.json"
+    },
+    "service": {
+      "description": "Create Service Libs",
+      "factory": "./service/index#createLib",
+      "schema": "./service/schema.json"
+    },
+    "ui": {
+      "description": "Create UI Libs",
+      "factory": "./ui/index#createLib",
+      "schema": "./ui/schema.json"
+    },
+    "util": {
+      "description": "Create Util Libs",
+      "factory": "./util/index#createLib",
+      "schema": "./util/schema.json"
+    },
+    "element": {
+      "description": "Create Element APP",
+      "factory": "./element/index#elementApp",
+      "schema": "./element/schema.json"
+    },
+    "web": {
+      "description": "Create Web APP",
+      "factory": "./web/index#webApp",
+      "schema": "./web/schema.json"
+    },
+    "app": {
+      "description": "Create Web APP",
+      "factory": "./app/index#app",
+      "schema": "./app/schema.json"
+    }
+  }
+}

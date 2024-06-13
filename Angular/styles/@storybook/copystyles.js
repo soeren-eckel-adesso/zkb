@@ -1,0 +1,5 @@
+const fs = require("fs-extra");
+(async function build() {
+  await fs.copyFile("./styles/@storybook/import/fonts.scss", "./styles/fonts.scss");
+  await fs.copyFile("./styles/@storybook/import/variables.scss", "./styles/variables.scss");
+})();

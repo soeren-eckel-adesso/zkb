@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+        <Content Include="App_Plugins\PropertyEditors\KeyValuePairs\KeyValuePairs.Prevalue.html">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="App_Plugins\PropertyEditors\KeyValuePairs\KeyValuePairsPrevalueController.js">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="wwwroot\media\eszlo0zp\image.png" />
+        <Content Include="wwwroot\media\gnjpnaif\image.png" />
+        <Content Include="wwwroot\media\niab145i\image.png" />
+        <Content Include="wwwroot\media\p2nnmh0k\celsius-2125_1920.jpg" />
+        <Content Include="wwwroot\media\uvsppluc\image.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Markdig" Version="0.32.0" />
+        <PackageReference Include="uMarketingSuite" Version="1.23.0" />
+        <PackageReference Include="uMarketingSuite.UmbracoForms" Version="1.1.0" />
+        <PackageReference Include="Umbraco.Cms" Version="12.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Opt-in to app-local ICU to ensure consistent globalization APIs across different platforms -->
+        <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="68.2.0.9" />
+        <PackageReference Include="Umbraco.Cms.Core" Version="12.1.0" />
+        <PackageReference Include="Umbraco.Forms" Version="12.0.0" />
+        <PackageReference Include="Umbraco.Forms.Core" Version="12.0.0" />
+        <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="68.2.0.9" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\PropertyEditors\KeyValuePairsEditor.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\assets" />
+    </ItemGroup>
+
+
+
+    <PropertyGroup>
+        <!-- Razor files are needed for the backoffice to work correctly -->
+        <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <!-- Remove RazorCompileOnBuild and RazorCompileOnPublish when not using ModelsMode InMemoryAuto -->
+        <RazorCompileOnBuild>false</RazorCompileOnBuild>
+        <RazorCompileOnPublish>false</RazorCompileOnPublish>
+    </PropertyGroup>
+
+</Project>

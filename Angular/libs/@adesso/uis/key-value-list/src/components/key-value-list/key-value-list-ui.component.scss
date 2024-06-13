@@ -1,0 +1,51 @@
+@import "../../../../../../../styles/variables.scss";
+@import "../../../../../../../styles/fonts.scss";
+
+.adesso-key-value-list-component {
+  @include font-default;
+  width: 100%;
+  font-size: $font-size-content-small;
+  color: $color-content;
+  table {
+    width: 100%;
+    td {
+
+    }
+  }
+
+  .column-key {
+    font-weight: bold;
+    padding-right: 15px;
+    white-space: nowrap;
+  }
+  .column-value {
+    width: 100%;
+  }
+
+}
+
+.list-design {
+  table {
+    border-top: 1px solid $color-limiter;
+    td {
+      padding-top: 8px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid $color-limiter;
+    }
+  }
+}
+.chart-box-design {
+  td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 50%;
+  }
+}
+.adesso-key-value-list-component GridLayout Label {
+  border-color: #D6D6D6;
+  border-bottom-width: 1px;
+}
+.adesso-key-value-list-component GridLayout Label.row-1 {
+  border-color: #000000;
+  border-bottom-width: 0;
+}

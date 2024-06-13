@@ -1,0 +1,39 @@
+<div class="main-content-background">
+	<div class="inner-content-area">
+		<ng-container *ngIf="pageConfig$ | async as pageConfig">
+			<feature-instrument-detail-header
+				*ngIf="pageConfig"
+				[instrument]="instrument"
+				[breadCrumbItems]="pageConfig.breadCrumbItems"
+				[chartQuoteBoxValues]="pageConfig.chartQuoteBoxValues"
+				[instrumentHeader]="pageConfig.instrumentHeader"
+			></feature-instrument-detail-header>
+
+			<feature-constituents *ngIf="pageConfig.valor" [valor]="pageConfig.valor"></feature-constituents>
+
+			<div class="content-columns">
+				<div class="content-column">
+					<ui-instrument-list
+						[listItems]="pageConfig.germanIndices | async"
+						[headline]="'german-headline' | translate"
+						[tableType]="tableType"
+					></ui-instrument-list>
+				</div>
+				<div class="content-column">
+					<ui-instrument-list
+						[listItems]="pageConfig.europeIndices | async"
+						[headline]="'europa-headline' | translate"
+						[tableType]="tableType"
+					></ui-instrument-list>
+				</div>
+				<div class="content-column">
+					<ui-instrument-list
+						[listItems]="pageConfig.usaAndAsiaIndices | async"
+						[headline]="'usa-and-asia-headline' | translate"
+						[tableType]="tableType"
+					></ui-instrument-list>
+				</div>
+			</div>
+		</ng-container>
+	</div>
+</div>

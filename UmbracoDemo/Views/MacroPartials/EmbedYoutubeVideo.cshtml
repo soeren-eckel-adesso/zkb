@@ -1,0 +1,72 @@
+﻿@using Microsoft.IdentityModel.Tokens
+@inherits Umbraco.Cms.Web.Common.Macros.PartialViewMacroPage
+
+@{
+    string GetValueOrDefault(object? parameter)
+    {
+        return parameter == null ? "null" : parameter.ToString().IsNullOrEmpty() ? "null" : parameter.ToString();
+    }
+
+    var macroInstanceId = Guid.NewGuid().ToString();
+    var videoId = GetValueOrDefault(Model.MacroParameters["videoId"]);
+    var videoWidth = GetValueOrDefault(Model.MacroParameters["videoWidth"]);
+    var videoHeight = GetValueOrDefault(Model.MacroParameters["videoHeight"]);
+    var noCookies = GetValueOrDefault(Model.MacroParameters["noCookies"]);
+    var renderPrivacyNote = GetValueOrDefault(Model.MacroParameters["renderPrivacyNote"]);
+}
+
+@if (renderPrivacyNote == "1")
+{
+    <div class="privacy-card privacy-card-note" id="privacy-note-@macroInstanceId">
+        <h3 class="privacy-card-title">Empfohlener externer Inhalt</h3>
+        <p class="privacy-card-content">An dieser Stelle ist ein empfohlenes externes Video. Bitte bestätigen Sie, dass dieses Video hier angezeigt werden soll.</p>
+        <button class="btn btn-outline-light" id="accept-button-@macroInstanceId">Akzeptieren</button>
+    </div>
+}
+
+<div class="video-container" id="video-placeholder-@macroInstanceId"></div>
+
+<script>
+    (function() {
+        let acceptButton = document.getElementById('accept-button-@macroInstanceId');
+        let videoPlaceholder = document.getElementById('video-placeholder-@macroInstanceId');
+        let privacyNote = document.getElementById('privacy-note-@macroInstanceId');
+        let videoBaseUrl = '@(noCookies == "1" ? "https://www.youtube-nocookie.com/embed/" + videoId : "https://www.youtube.com/embed/" + videoId)';
+        let iFrame = '<iframe id="video-iframe-@macroInstanceId" frameborder="0" src="' + videoBaseUrl + '" allowfullscreen></iframe>';
+
+        if ('@videoWidth' !== "null") {
+            privacyNote.style.maxWidth = '@videoWidth' + 'px';
+        }
+        
+        function showVideo() {
+            videoPlaceholder.innerHTML = iFrame;
+            videoPlaceholder.style.display = 'block';
+          
+            let embeddedVideo = document.getElementById('video-iframe-@macroInstanceId');
+            
+            if ('@videoWidth' !== "null") {
+                videoPlaceholder.style.maxWidth = '@videoWidth' + 'px';
+                embeddedVideo.style.maxWidth = '@videoWidth' + 'px';
+            }
+            if ('@videoHeight' !== "null") {
+                videoPlaceholder.style.maxHeight = '@videoHeight' + 'px';
+                embeddedVideo.style.maxHeight = '@videoHeight' + 'px';
+            }
+            if ('@videoWidth' === "null" & '@videoHeight' !== "null") {
+                embeddedVideo.style.width = 'unset';
+            }
+            
+            videoPlaceholder.style.aspectRatio = '16/9';
+            embeddedVideo.style.aspectRatio = '16/9';
+        }
+
+        if (@(renderPrivacyNote) === 1) {
+            acceptButton.addEventListener('click', function() {
+                privacyNote.style.display = 'none';
+                showVideo();
+            });
+        } else {
+            showVideo();
+        }
+    })();
+</script>

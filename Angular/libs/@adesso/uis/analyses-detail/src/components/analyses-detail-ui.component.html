@@ -1,0 +1,30 @@
+<div class="analyse-detail" *ngIf="analyse">
+  <span class="analyse-date">{{analyse.date | dateOrTime}}</span>
+  <h1 class="analyse-headline">{{analyse.headline}}</h1>
+
+  <div class="content-columns">
+    <div class="content-column">
+      <div class="analyse-body">
+        <p *ngFor="let paragraph of analyse.body">
+          <ng-container *ngIf="paragraph.substr(paragraph.length - 1, 1) == ':' && paragraph.length < 50; else normalParagraph">
+            <strong>{{paragraph}}</strong>
+          </ng-container>
+          <ng-template #normalParagraph>
+            {{paragraph}}
+          </ng-template>
+          <br>
+        </p>
+      </div>
+    </div>
+    <div class="content-column">
+      <br><br>
+      <ui-content-box [headline]="'Werte'" *ngIf="analyse.keyValues">
+        <ui-key-value-list [items]="analyse.keyValues" [design]="keyValueDesign"></ui-key-value-list>
+      </ui-content-box>
+    </div>
+  </div>
+
+
+</div>
+
+

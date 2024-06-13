@@ -1,0 +1,17 @@
+@import "../../../../../../styles/variables.scss";
+@import "../../../../../../styles/fonts.scss";
+@import "../../../../../../styles/content-areas";
+
+.analyse-detail {
+  @include font-default;
+}
+
+.analyse-date {
+  font-size: $font-size-very-small;
+}
+
+.analyse-body {
+  padding: 20px 0;
+  line-height: 26px;
+}
+

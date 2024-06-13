@@ -1,0 +1,23 @@
+<ng-container *ngLet="quoteStreamValue$ | async as value">
+  <ng-container *ngIf="data?.pushField === pf.lastUpdateDate; then dateValues; else relativeValues"></ng-container>
+  <ng-template #dateValues>
+    <span [class]="changeClass" [@changePositive]="animationState$ | async">{{value.displayDate | dateOrTime}}</span>
+  </ng-template>
+  <ng-template #relativeValues>
+    <ng-container *ngIf="data?.pushField === pf.askChangeRelative || data?.pushField === pf.bidChangeRelative; else changeAbsoluteValues">
+      <span [class]="changeClass" [@changePositive]="animationState$ | async">{{calculateFactor(value.displayValue) | percentage }}</span>
+    </ng-container>
+  </ng-template>
+  <ng-template #changeAbsoluteValues>
+    <ng-container *ngIf="data?.pushField === pf.askChangeAbsolute || data?.pushField === pf.bidChangeAbsolute; else absoluteValues">
+      <span [class]="changeClass" [@changePositive]="animationState$ | async">{{calculateFactor(value.displayValue) | changeAbsolute : { suffix: data?.suffix } }}</span>
+    </ng-container>
+  </ng-template>
+  <ng-template #absoluteValues>
+   <span [class]="changeClass" [@changePositive]="animationState$ | async">
+     {{calculateFactor(value.displayValue) | numberFormatter : {assetClass: data?.assetClass, decimals: data?.decimals} }}
+     <span *ngIf="(data?.pushField == pf.bidChangeRelative || data?.pushField == pf.askChangeRelative) && value.displayValue !== undefined">%</span>
+     <ng-container *ngIf="data?.suffix && value.displayValue !== undefined"> {{data.suffix}}</ng-container>
+   </span>
+  </ng-template>
+</ng-container>

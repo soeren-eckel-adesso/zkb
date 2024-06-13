@@ -1,0 +1,16 @@
+@import "../../../../../../styles/variables.scss";
+@import "../../../../../../styles/fonts.scss";
+
+.news-detail {
+ @include font-default;
+}
+
+.news-date {
+  font-size: $font-size-very-small;
+}
+
+.news-body {
+  padding: 20px 0;
+  line-height: 26px;
+}
+

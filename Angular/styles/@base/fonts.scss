@@ -1,0 +1,14 @@
+@mixin font-default {
+	font-family: FrutigerLTPro, Helvetica, sans-serif;
+	*,
+	input,
+	button,
+	text {
+		font-family: inherit;
+	}
+}
+
+@mixin font-bold {
+	font-family: FrutigerLTPro, Helvetica, sans-serif;
+	font-weight: bold;
+}

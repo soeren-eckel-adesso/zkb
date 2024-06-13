@@ -1,0 +1,100 @@
+<table class="table overview">
+	<tbody>
+		<tr>
+			<th class="w-auto">
+				<div class="main-value">{{ "ui-instrument-list-header-name" | translate }}</div>
+				<div class="d-lg-none">
+					ISIN
+					<div class="sub-value">{{ "ui-instrument-list-header-valor" | translate }}</div>
+				</div>
+			</th>
+			<th class="w-25 d-none d-lg-table-cell">
+				ISIN
+				<div class="sub-value">{{ "ui-instrument-list-header-valor" | translate }}</div>
+			</th>
+			<th class="w-25">
+				<div class="main-value">{{ "ui-instrument-list-header-last" | translate }}</div>
+				<div class="sub-value">{{ "ui-instrument-list-header-last-date" | translate }}</div>
+			</th>
+			<th class="w-25">
+				<div class="main-value">{{ "ui-instrument-list-header-changeAbsolute" | translate }}</div>
+				<div class="sub-value">{{ "ui-instrument-list-header-changePercent" | translate }}</div>
+			</th>
+		</tr>
+		<tr *ngFor="let instrument of listItems">
+			<td class="w-auto">
+				<div class="text-truncate">
+					<span>
+						<a
+							class="text-nowrap"
+							[routerLink]="[instrument.assetClass + '-detail-page' | translate : { instrumentId: instrument.valor }]"
+							title="{{ instrument.name }}"
+							>{{ instrument.name }}</a
+						>
+					</span>
+				</div>
+				<div class="d-lg-none">
+					{{ instrument.isin }}
+					<div class="sub-value">{{ instrument.valor }}</div>
+				</div>
+			</td>
+			<td class="w-25 d-none d-lg-table-cell">
+				{{ instrument.isin }}
+				<div class="sub-value">{{ instrument.valor }}</div>
+			</td>
+			<td class="w-25">
+				<div class="main-value">
+					<quote-stream
+						[options]="{
+							valor: instrument.valor,
+							pushField: pf.bid,
+							isin: instrument.isin,
+							value: instrument.quote,
+							assetClass: instrument.assetClass,
+							suffix: instrument.currencyCode
+						}"
+					></quote-stream>
+				</div>
+				<div class="sub-value">
+					<quote-stream
+						[options]="{
+							valor: instrument.valor,
+							pushField: pf.lastUpdateDate,
+							isin: instrument.isin,
+							valueDate: instrument.quoteDate,
+							assetClass: instrument.assetClass
+						}"
+					></quote-stream>
+				</div>
+			</td>
+			<td class="w-25">
+				<div class="main-value">
+					<quote-stream
+						[options]="{
+							valor: instrument.valor,
+							pushField: pf.bidChangeAbsolute,
+							isin: instrument.isin,
+							value: instrument.changeAbsolute,
+							assetClass: instrument.assetClass,
+							suffix: instrument.currencyCode,
+							close: instrument.close
+						}"
+					></quote-stream>
+				</div>
+				<div class="sub-value">
+					<quote-stream
+						[options]="{
+							valor: instrument.valor,
+							pushField: pf.bidChangeRelative,
+							isin: instrument.isin,
+							value: instrument.changePercent,
+							assetClass: instrument.assetClass,
+							close: instrument.close
+						}"
+					></quote-stream>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+{{ logger.uiUpdate("PerformanceTableUiComponent") }}

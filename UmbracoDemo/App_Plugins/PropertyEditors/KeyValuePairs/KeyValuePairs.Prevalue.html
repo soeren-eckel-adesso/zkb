@@ -1,0 +1,8 @@
+﻿<div ng-controller="KeyValuePairsPrevalueController">
+    <div ng-repeat="pair in keyValuePairs">
+        <input ng-model="pair.key" placeholder="Key" type="text"/>
+        <input ng-model="pair.value" placeholder="Value" type="text"/>
+        <button class="btn btn-primary" ng-click="removePair(pair)" style="margin-bottom: 10px">Remove</button>
+    </div>
+    <button class="btn btn-primary" ng-click="addPair()">Add Key-Value Pair</button>
+</div>

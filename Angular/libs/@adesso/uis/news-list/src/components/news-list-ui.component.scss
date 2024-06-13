@@ -1,0 +1,32 @@
+@import "../../../../../../styles/variables";
+@import "../../../../../../styles/fonts";
+@import "../../../../../../styles/default";
+
+.news-list {
+ @include font-default;
+}
+
+.news-item {
+  background-color: #FFFFFF;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: block;
+  text-decoration: none;
+}
+.news-item:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.news-headline {
+  color: $color-default;
+  display: block;
+
+  @include font-bold;
+}
+
+.news-date {
+  color: $color-default;
+  font-size: $font-size-very-small;
+}

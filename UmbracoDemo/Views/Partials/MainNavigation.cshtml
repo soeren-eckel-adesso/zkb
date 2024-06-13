@@ -1,0 +1,72 @@
+﻿@using Umbraco.Cms.Core.Routing
+@inherits UmbracoViewPage
+
+@inject IPublishedValueFallback PublishedValueFallback
+@inject IPublishedUrlProvider PublishedUrlProvider
+@*
+This snippet displays a list of links of the pages immediately under the top-most page in the content tree.
+This is the home page for a standard website.
+It also highlights the current active page/section in the navigation with the CSS class "current".
+*@
+
+<nav class="navbar navbar-expand-lg navbar-light" id="main-navbar">
+    <a class="navbar-brand p-0" href="/">
+        <img id="zkb-logo" alt="logo" hidden>
+    </a>
+
+    <div class="navbar-mobile-link-container">
+        <ul class="navbar-nav d-lg-none">
+            <li class="nav-item">
+                <a class="nav-link pl-3" aria-current="page" href="/produkte/suche">
+                    <i class="bi bi-search"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link  pl-3" aria-current="page" href="/watchlist">
+                    <i class="bi bi-star"></i>
+                </a>
+            </li>
+        </ul>
+        <button class="navbar-toggler ml-3" type="button" data-toggle="collapse" data-target="#main-navbar-toggler" aria-controls="main-navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+    </div>
+
+    <div class="collapse navbar-collapse mt-3" id="main-navbar-toggler">
+        <ul class="navbar-nav ml-auto my-auto">
+            <li class="nav-item d-none  d-lg-block">
+                <a class="nav-link pl-lg-3" aria-current="page" href="/produkte/suche">
+                    <i class="bi bi-search"></i>
+                    Suchen
+                </a>
+            </li>
+            <li class="nav-item  d-none d-lg-block">
+                <a class="nav-link pl-lg-3" aria-current="page" href="/watchlist">
+                    <i class="bi bi-star"></i>
+                    Watchlist
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pl-lg-3" aria-current="page" href="/produkte">
+                    Märkte
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pl-lg-3" aria-current="page" href="/produkte/anlageprodukte">
+                    Anlageprodukte
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pl-lg-3" aria-current="page" href="/produkte/hebelprodukte">
+                    Hebelprodukte
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link pl-lg-3" aria-current="page" href="/themen">
+                    Themen
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

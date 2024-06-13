@@ -1,0 +1,73 @@
+// Colors
+$color-default: #0275D8; // Adesso Blau
+$color-body-background: #f2f4f6ce;
+$color-content-area-background: #F2F4F6;
+$color-customer-primary: #FFFFFF; 
+$color-customer-secondary: rgba(245, 100, 0, 1);
+$color-active-background: $color-table-header-background;
+$color-positive: #14ee14;
+$color-negative: #ff0101;
+
+// Table styles
+$color-table-header-background: #FFFFFF;
+$color-table-header-font: $color-default;
+$color-table-row-background-even: #E6F8FD;
+$color-table-row-background-odd: #FFFFFF;
+$color-table-edit-background: #F2F2F2;
+$table-border: none;
+
+// Shadows
+$box-shadow: 1px 1px 1px 2px rgba(150, 150, 150, 0.2);
+
+// Buy/Sell Buttons
+$color-buy-button-background: #08AFFE;
+$color-buy-button-font: #FFFFFF;
+$color-sell-button-background: #08AFFE;
+$color-sell-button-font: #FFFFFF;
+
+// Font Sizes
+
+// Template Styles
+$header-height: 66px;
+
+// Responsive Breakpoints
+
+// Content Box Styles
+$content-box-background-color: rgba(255,255,255,0.9);
+$content-box-padding: 20px;
+$content-box-border-radius: 8px;
+$content-box-border-top: 1px solid $color-limiter;
+$content-box-border-bottom: 2px solid $color-limiter;
+$content-box-border-left: 1px solid $color-limiter;
+$content-box-border-right: 1px solid $color-limiter;
+$content-box-shadow: none;
+
+// Composition Box Styles
+$composition-box-background-color: $content-box-background-color;
+$composition-box-padding: $content-box-padding;
+$composition-box-border-radius: $content-box-border-radius;
+$composition-box-border-top: $content-box-border-top;
+$composition-box-border-bottom: $content-box-border-bottom;
+$composition-box-border-left: $content-box-border-left;
+$composition-box-border-right: $content-box-border-right;
+$composition-box-shadow: $content-box-shadow;
+
+// Chart Box Styles
+$chart-box-background-color: $content-box-background-color;
+$chart-box-padding: $content-box-padding;
+$chart-box-border-radius: $content-box-border-radius;
+$chart-box-border-top: $content-box-border-top;
+$chart-box-border-bottom: $content-box-border-bottom;
+$chart-box-border-left: $content-box-border-left;
+$chart-box-border-right: $content-box-border-right;
+$chart-box-shadow: $content-box-shadow;
+
+// Default Mixins
+@mixin contentDistanceBottom {
+  margin-bottom: 20px;
+}
+
+
+
+
+

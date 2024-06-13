@@ -1,0 +1,175 @@
+{
+  "projectType": "application",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "root": "apps/web-<%= name %>",
+  "sourceRoot": "apps/web-<%= name %>/src",
+  "prefix": "app",
+  "architect": {
+    "build": {
+      "builder": "@angular-devkit/build-angular:browser",
+      "allowedCommonJsDependencies": [
+        "highcharts",
+        "highcharts/highmaps",
+        "highcharts/highstock"
+      ],
+      "options": {
+        "outputPath": "dist/apps/web-<%= name %>",
+        "index": "apps/web-<%= name %>/src/index.html",
+        "main": "apps/web-<%= name %>/src/main.ts",
+        "polyfills": "apps/web-<%= name %>/src/polyfills.ts",
+        "tsConfig": "apps/web-<%= name %>/tsconfig.json",
+        "aot": true,
+        "assets": [
+          "apps/web-<%= name %>/src/favicon.ico",
+          "apps/web-<%= name %>/src/assets",
+          "apps/web-<%= name %>/src/manifest.webmanifest"
+        ],
+        "styles": [
+          "apps/web-<%= name %>/src/styles.scss"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/web-<%= name %>/src/environments/environment.ts",
+              "with": "apps/web-<%= name %>/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": true,
+          "extractLicenses": false,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "60kb",
+              "maximumError": "100kb"
+            }
+          ],
+          "serviceWorker": true,
+          "ngswConfigPath": "apps/web-<%= name %>/ngsw-config.json"
+        },
+        "dev": {
+          "tsConfig": "apps/web-<%= name %>/tsconfig.json",
+          "fileReplacements": [],
+          "optimization": false,
+          "outputHashing": "all",
+          "sourceMap": true,
+          "namedChunks": true,
+          "extractLicenses": false,
+          "vendorChunk": false,
+          "buildOptimizer": false,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "8mb",
+              "maximumError": "15mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "60kb",
+              "maximumError": "100kb"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "builder": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "web-<%= name %>:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "web-<%= name %>:build:production"
+        },
+        "serverless": {
+          "browserTarget": "web-<%= name %>:build:serverless"
+        },
+        "dev": {
+          "browserTarget": "web-<%= name %>:build:dev"
+        }
+      }
+    },
+    "server": {
+      "builder": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/apps/web-<%= name %>/server",
+        "main": "apps/web-<%= name %>/server.ts",
+        "tsConfig": "apps/web-<%= name %>/tsconfig.server.json"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media",
+          "fileReplacements": [
+            {
+              "replace": "apps/web-<%= name %>/src/environments/environment.ts",
+              "with": "apps/web-<%= name %>/src/environments/environment.prod.ts"
+            }
+          ],
+          "sourceMap": false,
+          "optimization": true
+        },
+        "serverless": {
+          "outputHashing": "media",
+          "sourceMap": false,
+          "optimization": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/web-<%= name %>/src/environments/environment.ts",
+              "with": "apps/web-<%= name %>/src/environments/environment.serverless.ts"
+            }
+          ]
+        },
+        "dev": {
+          "tsConfig": "apps/web-<%= name %>/tsconfig.server.json",
+          "outputHashing": "media",
+          "fileReplacements": [],
+          "sourceMap": false,
+          "optimization": true
+        }
+      }
+    },
+    "serve-ssr": {
+      "builder": "@nguniversal/builders:ssr-dev-server",
+      "options": {
+        "browserTarget": "web-<%= name %>:build:dev",
+        "serverTarget": "web-<%= name %>:server:dev"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "web-<%= name %>:build:dev",
+          "serverTarget": "web-<%= name %>:server:dev"
+        },
+        "dev": {
+          "browserTarget": "web-<%= name %>:build:dev",
+          "serverTarget": "web-<%= name %>:server:dev"
+        }
+      }
+    },
+    "lint": {
+      "builder": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/web-<%= name %>/**/*.ts",
+          "apps/web-<%= name %>/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:web"]
+}

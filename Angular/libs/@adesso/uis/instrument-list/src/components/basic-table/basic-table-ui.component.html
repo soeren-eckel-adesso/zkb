@@ -1,0 +1,58 @@
+<table *ngIf="listItems" class="table">
+	<tbody>
+		<tr>
+			<th>
+				<div class="main-value">{{ "ui-instrument-list-header-name" | translate }}</div>
+				<div class="sub-value">{{ "ui-instrument-list-header-valor" | translate }}</div>
+			</th>
+			<th>
+				<div class="main-value">{{ "ui-instrument-list-header-isin" | translate }}</div>
+				<div class="sub-value">{{ "ui-instrument-list-header-wkn" | translate }}</div>
+			</th>
+			<th>
+				<div class="main-value">{{ "ui-instrument-list-header-last" | translate }}</div>
+				<div class="sub-value">{{ "ui-instrument-list-header-last-date" | translate }}</div>
+			</th>
+		</tr>
+		<tr *ngFor="let instrument of listItems">
+			<td>
+				<a
+					class="main-value dottedText"
+					[routerLink]="[instrument.assetClass + '-detail-page' | translate : { instrumentId: instrument.valor }]"
+					>{{ instrument.name }}</a
+				>
+				<div class="sub-value">{{ instrument.valor }}</div>
+			</td>
+			<td>
+				<div class="main-value">{{ instrument.isin }}</div>
+				<div class="main-value">{{ instrument.wkn }}</div>
+			</td>
+			<td>
+				<div class="main-value">
+					<quote-stream
+						[options]="{
+							valor: instrument.valor,
+							pushField: pf.bid,
+							isin: instrument.isin,
+							value: instrument.quote,
+							assetClass: instrument.assetClass,
+							suffix: instrument.currencyCode
+						}"
+					></quote-stream>
+				</div>
+				<div class="main-value">
+					<quote-stream
+						[options]="{
+							valor: instrument.valor,
+							pushField: pf.lastUpdateDate,
+							isin: instrument.isin,
+							valueDate: instrument.quoteDate,
+							assetClass: instrument.assetClass
+						}"
+					></quote-stream>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+{{ logger.uiUpdate("BasicTableUiComponent") }}

@@ -1,0 +1,12 @@
+<div class="ui-context-menu-list" *ngIf="items">
+  <ng-container *ngFor="let item of items">
+    <span *ngIf="!item.url" class="ui-context-menu-list-item ui-context-menu-list-main-item">{{item.label}}</span>
+    <a *ngIf="item.url" class="ui-context-menu-list-item ui-context-menu-list-main-item" [routerLink]="item.url" (click)="clicked.emit(true)">{{item.label}}</a>
+    <ng-container *ngIf="item.items">
+      <ng-container *ngFor="let subItem of item.items">
+        <a class="ui-context-menu-list-item ui-context-menu-list-sub-item" [routerLink]="subItem.url" (click)="clicked.emit(true)">{{subItem.label}}</a>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>
+{{logger.uiUpdate("ContextMenuListUiComponent")}}

@@ -1,0 +1,27 @@
+<div class="login-box" *ngIf="group && group.contains('userName') && group.contains('password')">
+  <img [src]="logoSrc" *ngIf="logoSrc" class="logo">
+  <span class="title" *ngIf="title">{{title}}</span>
+  <span class="description" *ngIf="description">{{description}}</span>
+  <form [formGroup]="group" (ngSubmit)="login()">
+    <div class="input-field">
+      <ui-form-input [label]="'ui-login-username-placeholder' | translate" [control]="group.controls.userName" [type]="inputType.text"
+                     [hasError]="formService.hasFormControlErrors(group.controls.userName)"
+                     [errorMessage]="formService.formControlErrorMessage(group.controls.userName, 'ui-login-username-placeholder' | translate)"
+      ></ui-form-input>
+    </div>
+    <div class="input-field">
+      <ui-form-input [label]="'ui-login-password-placeholder' | translate" [control]="group.controls.password" [type]="inputType.password"
+                     [hasError]="formService.hasFormControlErrors(group.controls.password)"
+                     [errorMessage]="formService.formControlErrorMessage(group.controls.password, 'ui-login-password-placeholder' | translate)"
+      ></ui-form-input>
+    </div>
+
+    <div class="error-message">
+      {{errorMessage}}
+    </div>
+
+    <div class="button-box">
+      <ui-form-button [disabled]="group.invalid" [label]="'ui-login-button-text' | translate"></ui-form-button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,18 @@
+<div class="element-suggest-search" [ngClass]="designClass" class="mb-4 position-relative">
+	<input
+		type="text"
+		id="search-input"
+		autocomplete="off"
+		[ngClass]="{ search: isSearch }"
+		class="form-control text-primary border-top-0 border-left-0 border-right-0 border-primary pb-2"
+		[formControl]="inputSearchControl"
+		[placeholder]="'Suchbegriff eingeben'"
+	/>
+	<ng-container *ngIf="searchResult$ | async as searchResult">
+		<div class="dropdown-menu open-close-container w-100" [@openClose]="searchResult.length > 0 ? 'open' : 'closed'">
+			<div class="dropdown-menu-content">
+				<ui-context-menu-list [items]="searchResult" (clicked)="clearSearch()"></ui-context-menu-list>
+			</div>
+		</div>
+	</ng-container>
+</div>

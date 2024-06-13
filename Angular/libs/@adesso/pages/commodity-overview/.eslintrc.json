@@ -1,0 +1,4 @@
+{
+  "extends": [ "../../../../.eslint/.eslintrc-page.json"],
+  "ignorePatterns": ["!**/*", "**/*.stories.ts"]
+}

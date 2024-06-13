@@ -1,0 +1,105 @@
+{
+  "projectType": "application",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "root": "apps/element-<%= name %>",
+  "sourceRoot": "apps/element-<%= name %>/src",
+  "prefix": "app",
+  "architect": {
+    "build": {
+      "builder": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/element-<%= name %>/",
+        "index": "apps/element-<%= name %>/src/index.html",
+        "main": "apps/element-<%= name %>/src/main.ts",
+        "polyfills": "apps/element-<%= name %>/src/polyfills.ts",
+        "tsConfig": "apps/element-<%= name %>/tsconfig.json",
+        "aot": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/element-<%= name %>/src/environments/environment.ts",
+              "with": "apps/element-<%= name %>/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "none",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": false,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "30kb"
+            }
+          ]
+        },
+        "dev": {
+          "tsConfig": "apps/element-<%= name %>/tsconfig.json",
+          "optimization": false,
+          "outputHashing": "none",
+          "sourceMap": true,
+          "namedChunks": false,
+          "extractLicenses": false,
+          "vendorChunk": false,
+          "buildOptimizer": false,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "8mb",
+              "maximumError": "15mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "30kb"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "builder": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "element-<%= name %>:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "element-<%= name %>:build:production"
+        },
+        "dev": {
+          "browserTarget": "element-<%= name %>:build:dev"
+        }
+      }
+    },
+    "extract-i18n": {
+      "builder": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "element-<%= name %>:build"
+      }
+    },
+    "lint": {
+      "builder": "@angular-eslint/builder:lint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/element-<%= name %>/**/*.ts",
+          "apps/element-<%= name %>/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:element"]
+}

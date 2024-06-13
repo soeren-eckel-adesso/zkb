@@ -1,0 +1,16 @@
+﻿@inherits UmbracoViewPage<ContentModels.SubjectCategory>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+}
+
+@{
+    var currentPage = Umbraco.AssignedContentItem;
+    var parentPage = currentPage.Parent!;
+}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  window.location.href = '@(parentPage.Url() + "?category=" + currentPage.Id)';
+});
+</script>

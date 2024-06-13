@@ -1,0 +1,30 @@
+﻿@inherits UmbracoViewPage<ContentModels.WatchlistDashboard>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+}
+
+@{
+    var currentPage = Umbraco.AssignedContentItem;
+}
+
+<nav aria-label="breadcrumb" class="d-none d-lg-block">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Startseite</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+            @currentPage.Name
+        </li>
+    </ol>
+</nav>
+
+<h1>Sie beobachten X Werte</h1>
+
+<div class="row">
+    <div class="col text-nowrap hide-scrollbar overflow-auto">
+        <span class="badge badge-pill badge-primary p-2">Alle (X)</span>
+        <span class="badge badge-pill badge-secondary p-2">Aktien (X)</span>
+        <span class="badge badge-pill badge-secondary p-2">Discount-Zertifikate (X)</span>
+    </div>
+</div>

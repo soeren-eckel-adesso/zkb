@@ -1,0 +1,43 @@
+﻿@using Umbraco.Cms.Core.Models
+@model  IOrderedEnumerable<IPublishedContent>
+
+<div class="subject-article-references-container row">
+    <div class="col-sm-12 col-md-4 col-xl-3">
+        <h3 class="subject-article-references-header">Das könnte Sie auch interessieren</h3>
+        <p>
+            <a class="subject-article-references-topic-link" href="/themen">
+                Zu den Themen
+                <i class="bi bi-arrow-right"></i>
+            </a>
+        </p>
+
+    </div>
+    <div class="col-sm-12 col-md-8 col-xl-9">
+        <div class="row subject-references-container rg-3">
+            @for (var i = 0; i < 3 && i < Model.Count(); i++)
+            {
+                var item = Model.ElementAt(i);
+                <div class="col-12 col-lg-6 col-xxl-4">
+                    <div class="card h-100">
+                        @{
+                            var similarArticleCoverImage = item.Value<MediaWithCrops>("coverImage");
+                            var similarArticleCoverImageUrl = similarArticleCoverImage is not null ? similarArticleCoverImage.MediaUrl() : "/img/default.jpg";
+                        }
+                        <img class="card-img-top"
+                             src="@similarArticleCoverImageUrl"
+                             alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Value("title")</h5>
+                            <p class="card-text">
+                                @item.Value("teaser")
+                            </p>
+                            <a href="@item.Url()" class="stretched-link">
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

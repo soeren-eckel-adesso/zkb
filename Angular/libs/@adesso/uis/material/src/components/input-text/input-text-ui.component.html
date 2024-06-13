@@ -1,0 +1,5 @@
+<ui-material-styles *ngIf="includeStyles"></ui-material-styles>
+<mat-form-field class="example-full-width">
+  <mat-label>{{label}}</mat-label>
+  <input matInput [(ngModel)]="value" (keyup)="inputChanged()" [placeholder]="placeholder" (keyup.enter)="submitted.emit()">
+</mat-form-field>

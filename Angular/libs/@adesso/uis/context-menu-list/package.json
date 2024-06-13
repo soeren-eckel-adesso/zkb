@@ -1,0 +1,14 @@
+{
+  "name": "@adesso/ui-context-menu-list",
+  "version": "0.0.1",
+  "dependencies": {
+
+  },
+  "peerDependencies": {
+    "@angular/router": "^11.1.1",
+    "@angular/core": "^11.1.1",
+    "zone.js": "^0.10.3",
+    "@angular/platform-browser-dynamic": "^11.1.1",
+    "@angular/common": "^11.1.1"
+  }
+}

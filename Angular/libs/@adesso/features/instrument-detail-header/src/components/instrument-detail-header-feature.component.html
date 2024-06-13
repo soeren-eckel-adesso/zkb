@@ -1,0 +1,199 @@
+<div class="breadcrumb-arean d-none d-lg-block">
+	<ui-breadcrumb [items]="breadCrumbItems"></ui-breadcrumb>
+</div>
+<div class="clear"></div>
+<div class="adesso-content-full px-2 px-md-4">
+	<ui-instrument-header [instrument]="instrumentHeader"></ui-instrument-header>
+</div>
+
+<div class="row no-gutters" *ngIf="instrumentHeader">
+	<div class="col-12 col-xl-5">
+		<div class="pl-2 pl-md-4 bg-green">
+			<div class="row no-gutters">
+				<div class="col-8 py-3">
+					<span class="">Sekundärmarkt</span>
+				</div>
+				<div class="col-4 bg-white px-2 py-3">
+					<span class=""><i class="bi bi-star"></i> <span class="d-none d-md-inline"> Beobachten</span> </span>
+				</div>
+				<div class="col-12 bg-dark text-white px-3">
+					<ng-container *ngIf="chartData$ | async as chartData">
+						<ng-container *ngIf="chartQuoteBoxValues$ | async as chartQuoteBoxValues">
+							<ui-chart-quote-box
+								[instrument]="instrument"
+								[values]="chartQuoteBoxValues"
+								[chartData]="chartData"
+								(chartTimeSelected)="loadChartData($event)"
+								[isChart]="false"
+								[isin]="instrumentHeader.isin"
+								[knockout]="knockout"
+							></ui-chart-quote-box>
+						</ng-container>
+					</ng-container>
+				</div>
+				<div class="col-12 bg-dark text-white px-3">
+					<div class="row no-gutters border-bottom border-top border-primary">
+						<div class="col-6 py-3">ISIN</div>
+						<div class="col-6 py-3 text-right">
+							<span
+								class="border-top border-right border-white d-inline-block position-absolute"
+								style="padding: 8px; margin-top: 4px; margin-left: 6px; cursor: pointer"
+								(click)="copyMessage()"
+							>
+							</span>
+							<button class="border border-white bg-dark p-1 mr-1" (click)="copyMessage()"></button>
+
+							{{ instrumentHeader.isin }}
+						</div>
+					</div>
+				</div>
+				<div class="col-12 bg-dark text-white px-3" *ngIf="underlying && underlyingChartQuoteBoxValues">
+					<div class="row no-gutters border-bottom border-primary">
+						<div class="col-6 py-3">{{ instrument?.derivativeData.underlyings[0].name }}</div>
+						<div class="col-6 py-3 text-right">
+							<quote-stream
+								[options]="{
+									valor: underlyingChartQuoteBoxValues.chartPayload?.valor,
+									pushField: pf.bid,
+									suffix: '',
+									value: underlyingChartQuoteBoxValues.bid,
+									assetClass: underlyingChartQuoteBoxValues.assetClass
+								}"
+							></quote-stream>
+							{{ instrument?.derivativeData.underlyings[0].referenceCurrency.name }}
+							<i class="bi bi-caret-up-fill" *ngIf="instrument?.derivativeData.figures.changePercent >= 0"></i>
+							<i class="bi bi-caret-down-fill" *ngIf="instrument?.derivativeData.figures.changePercent < 0"></i>
+							<ng-container *ngIf="underlyingChartQuoteBoxValues?.bid">
+								{{ (underlyingChartQuoteBoxValues?.bid ?? 0) / close / 100 | percent : ".2" }}
+							</ng-container>
+						</div>
+					</div>
+				</div>
+				<!-- discount begin -->
+				<div class="col-12 bg-dark text-white px-3" *ngIf="instrument?.derivativeData?.commonLevels?.cap">
+					<div class="row no-gutters border-bottom border-primary">
+						<div class="col-6 py-3">Höchstbetrag (Cap)</div>
+						<div class="col-6 py-3 text-right">
+							{{ instrument?.derivativeData.commonLevels.cap.value | number : ".2-2" }}
+							{{ instrument?.derivativeData.underlyings[0].referenceCurrency.name }}
+						</div>
+					</div>
+				</div>
+				<div class="col-12 bg-dark text-white px-3" *ngIf="instrument?.derivativeData?.figures?.sidewaysYieldPercentPerAnnum">
+					<div class="row no-gutters border-bottom border-primary">
+						<div class="col-6 py-3">Seitwärtsrendite p.a.</div>
+						<div class="col-6 py-3 text-right">
+							{{ instrument?.derivativeData.figures.sidewaysYieldPercentPerAnnum / 100 | percent : ".2" }}
+						</div>
+					</div>
+				</div>
+				<div class="col-12 bg-dark text-white px-3" *ngIf="instrument?.derivativeData?.figures?.discountAbsolute">
+					<div class="row no-gutters border-bottom border-primary">
+						<div class="col-6 py-3">Discount</div>
+						<div class="col-6 py-3 text-right">{{ instrument?.derivativeData.figures.discountPercent / 100 | percent : ".2" }}</div>
+					</div>
+				</div>
+				<!-- discount end -->
+				<!-- hebel begin -->
+				<div class="col-12 bg-dark text-white px-3" *ngIf="instrument?.derivativeData?.underlyings[0]?.levels?.strike?.value">
+					<div class="row no-gutters border-bottom border-primary">
+						<div class="col-6 py-3">Basispreis</div>
+						<div class="col-6 py-3 text-right">
+							{{ instrument?.derivativeData?.underlyings[0]?.levels?.strike.value | number : ".2-2" }}
+							{{ instrument?.derivativeData.underlyings[0].levels?.strike.currency.name }}
+						</div>
+					</div>
+				</div>
+				<div class="col-12 bg-dark text-white px-3" *ngIf="instrument?.derivativeData?.underlyings[0]?.levels?.stopLoss?.value">
+					<div class="row no-gutters border-bottom border-primary">
+						<div class="col-6 py-3">Knock-Out Barriere</div>
+						<div class="col-6 py-3 text-right">
+							{{ instrument?.derivativeData?.underlyings[0]?.levels?.stopLoss.value | number : ".2-2" }}
+							{{ instrument?.derivativeData.underlyings[0].levels?.stopLoss.currency.name }}
+						</div>
+					</div>
+				</div>
+				<div class="col-12 bg-dark text-white px-3" *ngIf="instrument?.derivativeData?.figures?.leverage">
+					<div class="row no-gutters border-bottom border-primary">
+						<div class="col-6 py-3">Hebel</div>
+						<div class="col-6 py-3 text-right" *ngIf="!knockout">{{ instrument?.derivativeData.figures.leverage | number : ".2-2" }}</div>
+						<div class="col-6 py-3 text-right" *ngIf="knockout">&#x2012;</div>
+					</div>
+				</div>
+				<div class="col-12 bg-dark text-white px-3" *ngIf="instrument?.derivativeData?.underlyings[0]?.levels?.strike?.distancePercent">
+					<div class="row no-gutters border-bottom border-primary">
+						<div class="col-6 py-3">Abstand Knock-Out</div>
+						<div class="col-6 py-3 text-right" *ngIf="!knockout">
+							{{ instrument?.derivativeData?.underlyings[0]?.levels?.strike.distancePercent / 100 | percent : ".2-2" }}
+						</div>
+						<div class="col-6 py-3 text-right" *ngIf="knockout">&#x2012;</div>
+					</div>
+				</div>
+				<div class="col-12 bg-dark text-white px-3" *ngIf="knockoutDate">
+					<div class="row no-gutters border-bottom border-primary">
+						<div class="col-6 py-3">Knock-Out Zeit</div>
+						<div class="col-6 py-3 text-right">
+							{{ knockoutDate | date : "dd.MM.yyyy hh:mm:ss" }}
+						</div>
+					</div>
+				</div>
+				<!-- hebel end -->
+				<div class="col-12 bg-dark text-white px-3" *ngIf="instrument?.derivativeData?.lifeCycle?.valuationDate">
+					<div class="row no-gutters border-bottom border-primary">
+						<div class="col-6 py-3">Letzter Bewertungstag</div>
+						<div class="col-6 py-3 text-right">{{ instrument?.derivativeData.lifeCycle.valuationDate | date : "dd.MM.yyyy" }}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="pl-2 pl-md-4">
+			<div class="row no-gutters">
+				<div class="col-12 bg-dark text-white p-3">
+					<button mat-button (click)="openDialog()" class="btn btn-link p-0 border-0 link-green">
+						Alle Produktdetails <i class="bi bi-arrow-right"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 offset-xl-1 col-xl-6 px-2 px-md-4 pl-xl-0" *ngIf="instrumentHeader">
+		<ng-container *ngIf="chartData$ | async as chartData">
+			<ng-container *ngIf="chartQuoteBoxValues$ | async as chartQuoteBoxValues">
+				<ng-container *ngIf="underlyingChartData$ | async as underlyingChartData">
+					<ui-chart-quote-box
+						[values]="chartQuoteBoxValues"
+						[chartData]="chartData"
+						(chartTimeSelected)="loadChartData($event)"
+						(underlyingChartTimeSelected)="loadUnderlyingChartData($event)"
+						[underlyingValues]="underlyingChartQuoteBoxValues"
+						[underlyingChartData]="underlyingChartData"
+						[instrument]="instrument"
+					></ui-chart-quote-box>
+				</ng-container>
+			</ng-container>
+		</ng-container>
+		<div class="documents-section col-xl-8 p-0">
+			<h2 class="documents-title">Dokumente</h2>
+			<div class="documents-container d-flex justify-content-between">
+				<div>Termsheet</div>
+				<a target="_blank" href="/produkte/assets/sample-pdfs/termsheet.pdf"><i class="bi bi-download"></i></a>
+			</div>
+			<div class="documents-container d-flex justify-content-between">
+				<div>Basisinformationsblatt DE</div>
+				<a target="_blank" href="/produkte/assets/sample-pdfs/basisinformationsblatt_de.pdf"><i class="bi bi-download"></i></a>
+			</div>
+			<div class="documents-container d-flex justify-content-between">
+				<div>Basisinformationsblatt EN</div>
+				<a target="_blank" href="/produkte/assets/sample-pdfs/basisinformationsblatt_en.pdf"><i class="bi bi-download"></i></a>
+			</div>
+			<div class="documents-container d-flex justify-content-between">
+				<div>Basisinformationsblatt FR</div>
+				<a target="_blank" href="/produkte/assets/sample-pdfs/basisinformationsblatt_fr.pdf"><i class="bi bi-download"></i></a>
+			</div>
+			<div class="documents-container d-flex justify-content-between">
+				<div>Basisinformationsblatt IT</div>
+				<a target="_blank" href="/produkte/assets/sample-pdfs/basisinformationsblatt_it.pdf"><i class="bi bi-download"></i></a>
+			</div>
+		</div>
+	</div>
+</div>

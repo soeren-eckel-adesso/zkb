@@ -1,0 +1,36 @@
+ {
+  "projectType": "library",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "root": "libs/@<%= customer %>/pages/<%= name %>",
+  "sourceRoot": "libs/@<%= customer %>/pages/<%= name %>/src",
+  "prefix": "lib",
+  "architect": {
+    "build": {
+      "builder": "@angular-devkit/build-ng-packagr:build",
+      "outputs": ["dist/libs/@<%= customer %>/pages/<%= name %>"],
+      "options": {
+        "tsConfig": "libs/@<%= customer %>/pages/<%= name %>/tsconfig.json",
+        "project": "libs/@<%= customer %>/pages/<%= name %>/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/@<%= customer %>/pages/<%= name %>/tsconfig.prod.json"
+        }
+      }
+    },
+    "lint": {
+      "builder": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/@<%= customer %>/pages/<%= name %>/**/*.ts",
+          "libs/@<%= customer %>/pages/<%= name %>/**/*.html"
+        ]
+      }
+    }
+  },
+   "tags": ["type:page"]
+}

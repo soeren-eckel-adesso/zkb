@@ -1,0 +1,8 @@
+<ui-material-styles *ngIf="includeStyles"></ui-material-styles>
+<mat-form-field appearance="fill">
+  <mat-label>{{label}}</mat-label>
+  <input matInput [matDatepicker]="picker" (dateChange)="onChange($event.value)" [placeholder]="placeholder" [(ngModel)]="value" (keyup.enter)="submitted.emit()">
+  <!--ToDo: must be implemented -->
+  <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+  <mat-datepicker #picker [startAt]="value"></mat-datepicker>
+</mat-form-field>

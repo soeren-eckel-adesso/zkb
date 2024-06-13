@@ -1,0 +1,29 @@
+@import "../../../../../../../styles/variables.scss";
+@import "../../../../../../../styles/fonts.scss";
+
+.chartBox {
+  width: 100%;
+  @include font-default;
+}
+.chart {
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+  z-index: 2;
+  font-family: Helvetica, Arial, sans-serif;
+  path {
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    fill: none;
+    vector-effect: non-scaling-stroke;
+    transition: stroke-width 0.3s;
+  }
+  text {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif !important;
+    font-size: 11px;
+    color: #666666;
+    cursor: default;
+    fill: #666666;
+
+  }
+}

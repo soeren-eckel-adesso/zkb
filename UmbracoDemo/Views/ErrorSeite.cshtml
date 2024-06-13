@@ -1,0 +1,18 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = "Master.cshtml";
+    var currentPage = Umbraco.AssignedContentItem;
+}
+
+<div style="display: none;" id="content-body" class="mt-5">@await Html.GetBlockGridHtmlAsync(currentPage, "inhalt")</div>
+
+<script>
+const currentURL = window.location.href;
+if (currentURL.includes('/produkte')) {
+  window.location.href = '/produkte';
+} else {
+  var contentDiv = document.getElementById("content-body");
+  contentDiv.style.display = "block";
+}
+</script>

@@ -1,0 +1,27 @@
+﻿@using Microsoft.IdentityModel.Tokens
+@inherits Umbraco.Cms.Web.Common.Macros.PartialViewMacroPage
+
+@{
+    var umbracoVideoId = Model.MacroParameters["umbracoVideo"];
+    var umbracoVideoUrl = string.Empty;
+    if (umbracoVideoId != null)
+    {
+        var umbracoVideo = Umbraco.Media(umbracoVideoId);
+        umbracoVideoUrl = umbracoVideo?.Properties.FirstOrDefault()?.GetValue()?.ToString();
+    }
+    
+    var umbracoVideoPosterId = Model.MacroParameters["vorschaubild"];
+    var umbracoVideoPosterUrl = string.Empty;
+    if (umbracoVideoPosterId != null)
+    {
+        var umbracoVideoPoster = Umbraco.Media(umbracoVideoPosterId);
+        umbracoVideoPosterUrl = umbracoVideoPoster?.Properties.FirstOrDefault()?.GetValue()?.ToString();
+    }
+}
+
+@if (umbracoVideoId != null && !umbracoVideoUrl.IsNullOrEmpty())
+{
+    <video controls controlsList="nodownload" width="100%" height="100%" poster="@umbracoVideoPosterUrl">
+        <source src=@umbracoVideoUrl type="video/mp4" style="width:100%;">
+    </video>
+}

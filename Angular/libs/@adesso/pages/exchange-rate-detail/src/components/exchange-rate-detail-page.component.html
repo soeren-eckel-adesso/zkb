@@ -1,0 +1,7 @@
+<div class="main-content-background">
+  <div class="inner-content-area">
+    <ng-container *ngIf="pageConfig$ | async as pageConfig">
+      <feature-instrument-detail-header [breadCrumbItems]="pageConfig.breadCrumbItems" [chartQuoteBoxValues]="pageConfig.chartQuoteBoxValues" [instrumentHeader]="pageConfig.instrumentHeader"></feature-instrument-detail-header>
+    </ng-container>
+  </div>
+</div>

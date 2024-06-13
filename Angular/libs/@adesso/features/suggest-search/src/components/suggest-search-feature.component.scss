@@ -1,0 +1,23 @@
+@import "../../../../../../styles/variables.scss";
+@import "../../../../../../styles/fonts.scss";
+
+.element-suggest-search {
+	position: relative;
+}
+.dropdown-menu {
+	overflow: hidden;
+	overflow-y: scroll;
+	z-index: 40;
+	background-color: #fdfdfd;
+	position: absolute;
+}
+
+.ui-context-menu-list:empty {
+	display: none;
+}
+#search-input {
+	border-width: 2px;
+	&::placeholder {
+		color: #003cb4;
+	}
+}

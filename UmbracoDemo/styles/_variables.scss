@@ -1,0 +1,151 @@
+/**
+ * CONTENTS
+ *
+ * Colors..................Override bootstrap default colors with citi color palette.
+ * Spacing.................Override space variables.
+ * Grid....................Override  grid variables.
+ * Typography..............Overriding typography settings like font family, font size, etc
+ * Form....................Override form variables.
+ * Progress bars...........Override  progress bar variables.
+ */
+
+/*------------------------------------*\
+  # VARIABLES
+\*------------------------------------*/
+
+/**
+ * Colors
+ */
+$white: #fff;
+$gray-100: #eff5ff;
+$gray-200: #d6d6d6;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+$darkBlue: #000078;
+$blue: #003cb4;
+$lightBlue: #d3e3fd;
+$cyan: #006cff;
+$green: #82e1e1;
+$teal: #00bec8;
+
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #d63384;
+$red: #d42a2c;
+$orange: #fd7e14;
+$yellow: #ffc107;
+
+/**
+ * Themes
+ */
+$primary: $blue;
+$secondary: $cyan;
+$light: $gray-100;
+$dark: $darkBlue;
+$body-color: $primary;
+$input-color: $primary;
+$input-placeholder-color: $secondary;
+$navbar-light-color: $primary;
+$navbar-light-hover-color: $secondary;
+$navbar-light-active-color: $secondary;
+$breadcrumb-divider-color: $primary;
+$breadcrumb-active-color: $secondary;
+$breadcrumb-divider: quote(">");
+$link-decoration: underline;
+
+/**
+ * Spacing
+ */
+$spacer: rem(16);
+$spacers: ();
+$spacers: map-merge(
+                (
+                        0: 0,
+                        1: (
+                                $spacer * 0.5,
+                        ),
+                        2: (
+                                $spacer,
+                        ),
+                        3: (
+                                $spacer * 1.5,
+                        ),
+                        4: (
+                                $spacer * 3,
+                        ),
+                        5: (
+                                $spacer * 3.5,
+                        ),
+                ),
+                $spacers
+);
+
+/**
+ * Grid
+ */
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1600px,
+);
+
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px,
+        xxl: 1546px,
+);
+
+/**
+* font-sizes
+*/
+$font-size-base: rem(16);
+$fs-10: rem(10);
+$fs-12: rem(12);
+$fs-14: rem(14);
+$fs-16: rem(16);
+$fs-18: rem(18);
+$fs-20: rem(20);
+$fs-22: rem(22);
+$fs-24: rem(24);
+$fs-26: rem(26);
+$fs-32: rem(32);
+$fs-42: rem(42);
+$fs-54: rem(54);
+$fs-62: rem(62);
+
+/**
+ * Typography
+ */
+$h1-font-size: rem(48);
+$h2-font-size: rem(32);
+$h3-font-size: rem(24);
+$headings-font-weight: 900;
+$headings-margin-bottom: rem(48);
+$headings-color: $primary;
+$input-btn-focus-width: 1px;
+/**
+ * Form
+ */
+$btn-padding-y: rem(16);
+$btn-padding-x: rem(40);
+$btn-font-weight: bold;
+$input-btn-focus-color: $cyan;
+
+/**
+ * Table
+ */
+$table-cell-padding: 0.75rem;
+$table-cell-padding-sm: 0.75rem;
+$table-th-font-weight: normal;

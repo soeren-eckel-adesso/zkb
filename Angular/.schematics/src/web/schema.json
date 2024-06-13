@@ -1,0 +1,14 @@
+{
+  "title": "web-app Schematics Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "x-prompt": "What is the name of the web?"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

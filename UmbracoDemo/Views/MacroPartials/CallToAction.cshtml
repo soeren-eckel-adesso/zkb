@@ -1,0 +1,33 @@
+﻿@inherits Umbraco.Cms.Web.Common.Macros.PartialViewMacroPage
+
+@{
+    var ctaHeadline = Model.MacroParameters["ctaHeadline"].ToString();
+    var ctaContent = Model.MacroParameters["ctaContent"].ToString();
+    var ctaButton = Model.MacroParameters["ctaButton"].ToString();
+    var ctaLink = Model.MacroParameters["ctaLink"].ToString();
+    var ctaImageId = Model.MacroParameters["ctaImageId"];
+    var ctaImageUrl = string.Empty;
+    if (ctaImageId != null)
+    {
+        var ctaImage = Umbraco.Media(ctaImageId);
+        ctaImageUrl = ctaImage?.Properties.FirstOrDefault()?.GetValue()?.ToString();
+    }
+    
+    var ctaLinkUrl = string.Empty;
+    if (ctaLink != null)
+    {
+        var ctaLinkObject = Umbraco.Content(ctaLink);
+        ctaLinkUrl = "/" + ctaLinkObject?.UrlSegment;
+    }
+}
+
+<div class="row newsletter-ad-container p-5">
+    <div class="col-sm-12 col-lg-8">
+        <h2>@ctaHeadline</h2>
+        <p>@ctaContent</p>
+        <a href="@ctaLinkUrl" class="btn btn-outline-light align-self-center mt-5">@ctaButton</a>
+    </div>
+    <div class="col-sm-12 col-lg-4 newsletter-ad-img">
+        <img src="@ctaImageUrl" alt="newsletter ad image">
+    </div>
+</div>

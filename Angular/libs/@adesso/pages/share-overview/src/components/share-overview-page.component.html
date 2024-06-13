@@ -1,0 +1,20 @@
+<feature-carousel-with-search [slides]="slides"></feature-carousel-with-search>
+
+<div class="inner-content-area">
+  <div class="content-columns">
+    <div class="content-column" *ngLet="topDaxShares$ | async as topDaxShares">
+      <ui-instrument-list *ngIf="topDaxShares" [listItems]="topDaxShares.result" [headline]="'top-dax-shares-headline' | translate" [tableType]="topDaxShares.tableType"></ui-instrument-list>
+    </div>
+    <div class="content-column" *ngLet="flopDaxShares$ | async as flopDaxShares">
+      <ui-instrument-list *ngIf="flopDaxShares" [listItems]="flopDaxShares.result" [headline]="'flop-dax-shares-headline' | translate" [tableType]="flopDaxShares.tableType"></ui-instrument-list>
+    </div>
+  </div>
+  <div class="content-columns">
+    <div class="content-column" *ngLet="topDaxSharesOneYear$ | async as topDaxSharesOneYear">
+      <ui-instrument-list *ngIf="topDaxSharesOneYear" [listItems]="topDaxSharesOneYear.result" [headline]="'top-dax-shares-one-year-headline' | translate" [tableType]="topDaxSharesOneYear.tableType"></ui-instrument-list>
+    </div>
+    <div class="content-column" *ngLet="flopDaxSharesOneYear$ | async as flopDaxSharesOneYear">
+      <ui-instrument-list *ngIf="flopDaxSharesOneYear" [listItems]="flopDaxSharesOneYear.result" [headline]="'flop-dax-shares-one-year-headline' | translate" [tableType]="flopDaxSharesOneYear.tableType"></ui-instrument-list>
+    </div>
+  </div>
+</div>
